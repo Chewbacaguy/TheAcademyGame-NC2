@@ -7,17 +7,16 @@
 
 import SwiftUI
 import SpriteKit
-
 struct CigaretteGameView: View {
-    @StateObject private var viewModel = CigaretteGameViewModel()
+    @State private var isAnimationStarted = false
+    @State private var isGameOver = false
     @State private var isLeaderboardVisible = false
-    
-    
+    @StateObject private var viewModel = CigaretteGameViewModel()
+
     var body: some View {
         ZStack {
             // Add the SpriteView for your game scene in the background
-            SpriteView(scene: CigaretteGameScene(size: UIScreen.main.bounds.size, viewModel: viewModel))
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            SpriteView(scene: CigaretteGameScene(size: UIScreen.main.bounds.size, viewModel: viewModel, isAnimationStarted: $viewModel.isGameRunning, isGameOver: $viewModel.isGameOver))
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
@@ -28,34 +27,42 @@ struct CigaretteGameView: View {
                     .position(x: 200, y: 60)
                     .foregroundColor(.white)
                 
-                
                 Text("Catches")
                     .font(Font.custom("Luckiest Guy", size: 30))
                     .position(x: 200, y: -210)
                     .foregroundColor(.white)
                 
-                
-                
-                NavigationLink(destination: RunningGameView()) {
-                    Text(viewModel.isGameRunning ? "TAP TO CATCH" : "TAP 4 a trick")
+                Button(action: {
+                    if !isAnimationStarted {
+                        // Start the animation
+                        isAnimationStarted = true
+                        viewModel.isGameRunning = true
+                    } else if !isGameOver {
+                        // Handle button click during the game, e.g., stop the animation
+                        if viewModel.currentFrame == 32 {
+                            viewModel.incrementScore()
+                        } else {
+                            viewModel.isGameRunning = false
+                            isGameOver = true
+                        }
+                    } else {
+                        // Restart the game
+                        isGameOver = false
+                        viewModel.resetGame()
+                    }
+                }) {
+                    Text(isGameOver ? "TAP 4 a Trick" : (isAnimationStarted ? "TAP 2 CATCH" : "TAP 4 a Trick"))
                         .font(Font.custom("Luckiest Guy", size: 30))
                         .frame(width: 280, height: 72)
                         .padding(10)
                 }
                 .buttonStyle(IntroButtonStyle())
-                
-                // Leaderboard view (toggle visibility)
-                if isLeaderboardVisible {
-                    CigLeaderboardView(topCatches: [10, 8, 6]) // Replace with your actual leaderboard data
-                        .onTapGesture {
-                            // Handle leaderboard tap
-                        }
-                }
             }
         }
+        .fullScreenCover(isPresented: $isLeaderboardVisible) {
+            CigLeaderboardView(topCatches: [5,6,7])
+               }
     }
-    
-    
 }
 
 

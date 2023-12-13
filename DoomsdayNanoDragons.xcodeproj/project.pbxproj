@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AAAD737F2B28AF1B002038AF /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAD737E2B28AF1B002038AF /* IntroView.swift */; };
+		AAAD73822B28C049002038AF /* LuckiestGuy-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAAD73812B28C049002038AF /* LuckiestGuy-Regular.ttf */; };
+		AAAD738B2B28C590002038AF /* CigaretteGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAD738A2B28C590002038AF /* CigaretteGameScene.swift */; };
+		AAAD738E2B28FDE8002038AF /* CigaretteGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAD738D2B28FDE8002038AF /* CigaretteGameView.swift */; };
+		AAAD73902B28FFD4002038AF /* FartingGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAD738F2B28FFD4002038AF /* FartingGameView.swift */; };
+		AAAD73932B28FFF9002038AF /* RunningGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAD73922B28FFF9002038AF /* RunningGameView.swift */; };
+		AAAD73952B29001B002038AF /* ElevatorGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAD73942B29001B002038AF /* ElevatorGameView.swift */; };
+		AAAD739A2B290E73002038AF /* CigaretteGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAD73992B290E73002038AF /* CigaretteGameViewModel.swift */; };
+		AAAD739C2B2917F7002038AF /* CigLeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAD739B2B2917F7002038AF /* CigLeaderboardView.swift */; };
 		AAFCB82E2B1F5F640064A4D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFCB82D2B1F5F640064A4D3 /* AppDelegate.swift */; };
 		AAFCB8302B1F5F650064A4D3 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AAFCB82F2B1F5F650064A4D3 /* GameScene.sks */; };
 		AAFCB8322B1F5F650064A4D3 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = AAFCB8312B1F5F650064A4D3 /* Actions.sks */; };
@@ -18,6 +27,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AAAD737E2B28AF1B002038AF /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
+		AAAD73812B28C049002038AF /* LuckiestGuy-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LuckiestGuy-Regular.ttf"; sourceTree = "<group>"; };
+		AAAD73882B28C3E1002038AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		AAAD738A2B28C590002038AF /* CigaretteGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CigaretteGameScene.swift; sourceTree = "<group>"; };
+		AAAD738D2B28FDE8002038AF /* CigaretteGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CigaretteGameView.swift; sourceTree = "<group>"; };
+		AAAD738F2B28FFD4002038AF /* FartingGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FartingGameView.swift; sourceTree = "<group>"; };
+		AAAD73922B28FFF9002038AF /* RunningGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningGameView.swift; sourceTree = "<group>"; };
+		AAAD73942B29001B002038AF /* ElevatorGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevatorGameView.swift; sourceTree = "<group>"; };
+		AAAD73992B290E73002038AF /* CigaretteGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CigaretteGameViewModel.swift; sourceTree = "<group>"; };
+		AAAD739B2B2917F7002038AF /* CigLeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CigLeaderboardView.swift; sourceTree = "<group>"; };
 		AAFCB82A2B1F5F640064A4D3 /* DoomsdayNanoDragons.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoomsdayNanoDragons.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAFCB82D2B1F5F640064A4D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAFCB82F2B1F5F650064A4D3 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -40,6 +59,81 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AAAD73792B28AEA8002038AF /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				AAAD73972B290E57002038AF /* ViewModels */,
+				AAAD738C2B28FDD1002038AF /* Views */,
+				AAAD738A2B28C590002038AF /* CigaretteGameScene.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		AAAD737A2B28AEB4002038AF /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Nodes;
+			sourceTree = "<group>";
+		};
+		AAAD737B2B28AEBA002038AF /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		AAAD737C2B28AEC1002038AF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		AAAD737D2B28AED1002038AF /* Leaderboards */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Leaderboards;
+			sourceTree = "<group>";
+		};
+		AAAD73802B28C038002038AF /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				AAAD73812B28C049002038AF /* LuckiestGuy-Regular.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
+		AAAD738C2B28FDD1002038AF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AAAD739D2B291DC2002038AF /* Cig */,
+				AAAD737E2B28AF1B002038AF /* IntroView.swift */,
+				AAAD738F2B28FFD4002038AF /* FartingGameView.swift */,
+				AAAD73922B28FFF9002038AF /* RunningGameView.swift */,
+				AAAD73942B29001B002038AF /* ElevatorGameView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AAAD73972B290E57002038AF /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				AAAD73992B290E73002038AF /* CigaretteGameViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		AAAD739D2B291DC2002038AF /* Cig */ = {
+			isa = PBXGroup;
+			children = (
+				AAAD739B2B2917F7002038AF /* CigLeaderboardView.swift */,
+				AAAD738D2B28FDE8002038AF /* CigaretteGameView.swift */,
+			);
+			path = Cig;
+			sourceTree = "<group>";
+		};
 		AAFCB8212B1F5F640064A4D3 = {
 			isa = PBXGroup;
 			children = (
@@ -59,6 +153,13 @@
 		AAFCB82C2B1F5F640064A4D3 /* DoomsdayNanoDragons */ = {
 			isa = PBXGroup;
 			children = (
+				AAAD73882B28C3E1002038AF /* Info.plist */,
+				AAAD73802B28C038002038AF /* fonts */,
+				AAAD737D2B28AED1002038AF /* Leaderboards */,
+				AAAD737C2B28AEC1002038AF /* Resources */,
+				AAAD737B2B28AEBA002038AF /* Utils */,
+				AAAD737A2B28AEB4002038AF /* Nodes */,
+				AAAD73792B28AEA8002038AF /* Scenes */,
 				AAFCB82D2B1F5F640064A4D3 /* AppDelegate.swift */,
 				AAFCB82F2B1F5F650064A4D3 /* GameScene.sks */,
 				AAFCB8312B1F5F650064A4D3 /* Actions.sks */,
@@ -115,6 +216,9 @@
 				Base,
 			);
 			mainGroup = AAFCB8212B1F5F640064A4D3;
+			packageReferences = (
+				AAFCB8482B221FAB0064A4D3 /* XCRemoteSwiftPackageReference "SwiftGif" */,
+			);
 			productRefGroup = AAFCB82B2B1F5F640064A4D3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -134,6 +238,7 @@
 				AAFCB83B2B1F5F660064A4D3 /* Assets.xcassets in Resources */,
 				AAFCB83E2B1F5F660064A4D3 /* LaunchScreen.storyboard in Resources */,
 				AAFCB8322B1F5F650064A4D3 /* Actions.sks in Resources */,
+				AAAD73822B28C049002038AF /* LuckiestGuy-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,9 +249,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAAD739C2B2917F7002038AF /* CigLeaderboardView.swift in Sources */,
 				AAFCB8342B1F5F650064A4D3 /* GameScene.swift in Sources */,
+				AAAD738E2B28FDE8002038AF /* CigaretteGameView.swift in Sources */,
+				AAAD73902B28FFD4002038AF /* FartingGameView.swift in Sources */,
+				AAAD737F2B28AF1B002038AF /* IntroView.swift in Sources */,
+				AAAD738B2B28C590002038AF /* CigaretteGameScene.swift in Sources */,
 				AAFCB8362B1F5F650064A4D3 /* GameViewController.swift in Sources */,
+				AAAD73932B28FFF9002038AF /* RunningGameView.swift in Sources */,
+				AAAD739A2B290E73002038AF /* CigaretteGameViewModel.swift in Sources */,
 				AAFCB82E2B1F5F640064A4D3 /* AppDelegate.swift in Sources */,
+				AAAD73952B29001B002038AF /* ElevatorGameView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +413,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VZ9PFZ46UL;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DoomsdayNanoDragons/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -328,6 +442,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VZ9PFZ46UL;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DoomsdayNanoDragons/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -369,6 +484,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AAFCB8482B221FAB0064A4D3 /* XCRemoteSwiftPackageReference "SwiftGif" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swiftgif/SwiftGif.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = AAFCB8222B1F5F640064A4D3 /* Project object */;
 }
