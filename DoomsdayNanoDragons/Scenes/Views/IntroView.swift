@@ -59,7 +59,7 @@ struct IntroView: View {
                             
                             Image("TheAcaGame")
                                 .resizable()
-                                .frame(width: 367, height: 258)
+                                .frame(width: 367, height:300)
                                 .padding(1)
                             
                             

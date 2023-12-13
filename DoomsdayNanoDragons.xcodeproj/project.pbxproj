@@ -16,6 +16,15 @@
 		AAAD73952B29001B002038AF /* ElevatorGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAD73942B29001B002038AF /* ElevatorGameView.swift */; };
 		AAAD739A2B290E73002038AF /* CigaretteGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAD73992B290E73002038AF /* CigaretteGameViewModel.swift */; };
 		AAAD739C2B2917F7002038AF /* CigLeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAD739B2B2917F7002038AF /* CigLeaderboardView.swift */; };
+		AAB60CB82B294E82007AE64D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB60CB72B294E82007AE64D /* ContentView.swift */; };
+		AAB60CBB2B294F5C007AE64D /* FartingGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB60CBA2B294F5C007AE64D /* FartingGameViewModel.swift */; };
+		AAB60CBD2B294FFA007AE64D /* FartingGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB60CBC2B294FFA007AE64D /* FartingGameScene.swift */; };
+		AAB60CC02B295EBC007AE64D /* FartingLeaderBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB60CBF2B295EBC007AE64D /* FartingLeaderBoardView.swift */; };
+		AAB60CC42B2A072C007AE64D /* ElevatorGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB60CC32B2A072C007AE64D /* ElevatorGameScene.swift */; };
+		AAB60CC62B2A074F007AE64D /* ElevatorGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB60CC52B2A074F007AE64D /* ElevatorGameViewModel.swift */; };
+		AAB60CC82B2A0770007AE64D /* ElevatorLeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB60CC72B2A0770007AE64D /* ElevatorLeaderboardView.swift */; };
+		AAB60CCA2B2A0C15007AE64D /* RunningGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB60CC92B2A0C15007AE64D /* RunningGameScene.swift */; };
+		AAB60CCC2B2A0C76007AE64D /* RunningGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB60CCB2B2A0C76007AE64D /* RunningGameViewModel.swift */; };
 		AAFCB82E2B1F5F640064A4D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFCB82D2B1F5F640064A4D3 /* AppDelegate.swift */; };
 		AAFCB8302B1F5F650064A4D3 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AAFCB82F2B1F5F650064A4D3 /* GameScene.sks */; };
 		AAFCB8322B1F5F650064A4D3 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = AAFCB8312B1F5F650064A4D3 /* Actions.sks */; };
@@ -37,6 +46,15 @@
 		AAAD73942B29001B002038AF /* ElevatorGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevatorGameView.swift; sourceTree = "<group>"; };
 		AAAD73992B290E73002038AF /* CigaretteGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CigaretteGameViewModel.swift; sourceTree = "<group>"; };
 		AAAD739B2B2917F7002038AF /* CigLeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CigLeaderboardView.swift; sourceTree = "<group>"; };
+		AAB60CB72B294E82007AE64D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AAB60CBA2B294F5C007AE64D /* FartingGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FartingGameViewModel.swift; sourceTree = "<group>"; };
+		AAB60CBC2B294FFA007AE64D /* FartingGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FartingGameScene.swift; sourceTree = "<group>"; };
+		AAB60CBF2B295EBC007AE64D /* FartingLeaderBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FartingLeaderBoardView.swift; sourceTree = "<group>"; };
+		AAB60CC32B2A072C007AE64D /* ElevatorGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevatorGameScene.swift; sourceTree = "<group>"; };
+		AAB60CC52B2A074F007AE64D /* ElevatorGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevatorGameViewModel.swift; sourceTree = "<group>"; };
+		AAB60CC72B2A0770007AE64D /* ElevatorLeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevatorLeaderboardView.swift; sourceTree = "<group>"; };
+		AAB60CC92B2A0C15007AE64D /* RunningGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningGameScene.swift; sourceTree = "<group>"; };
+		AAB60CCB2B2A0C76007AE64D /* RunningGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningGameViewModel.swift; sourceTree = "<group>"; };
 		AAFCB82A2B1F5F640064A4D3 /* DoomsdayNanoDragons.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoomsdayNanoDragons.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAFCB82D2B1F5F640064A4D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAFCB82F2B1F5F650064A4D3 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -64,7 +82,6 @@
 			children = (
 				AAAD73972B290E57002038AF /* ViewModels */,
 				AAAD738C2B28FDD1002038AF /* Views */,
-				AAAD738A2B28C590002038AF /* CigaretteGameScene.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -108,11 +125,12 @@
 		AAAD738C2B28FDD1002038AF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AAB60CC22B2A06C9007AE64D /* Running */,
+				AAB60CC12B2A06B9007AE64D /* Elevator */,
+				AAB60CB92B294F37007AE64D /* Farting */,
 				AAAD739D2B291DC2002038AF /* Cig */,
 				AAAD737E2B28AF1B002038AF /* IntroView.swift */,
-				AAAD738F2B28FFD4002038AF /* FartingGameView.swift */,
-				AAAD73922B28FFF9002038AF /* RunningGameView.swift */,
-				AAAD73942B29001B002038AF /* ElevatorGameView.swift */,
+				AAB60CB72B294E82007AE64D /* ContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -121,6 +139,9 @@
 			isa = PBXGroup;
 			children = (
 				AAAD73992B290E73002038AF /* CigaretteGameViewModel.swift */,
+				AAB60CBA2B294F5C007AE64D /* FartingGameViewModel.swift */,
+				AAB60CC52B2A074F007AE64D /* ElevatorGameViewModel.swift */,
+				AAB60CCB2B2A0C76007AE64D /* RunningGameViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -128,10 +149,53 @@
 		AAAD739D2B291DC2002038AF /* Cig */ = {
 			isa = PBXGroup;
 			children = (
+				AAAD738A2B28C590002038AF /* CigaretteGameScene.swift */,
 				AAAD739B2B2917F7002038AF /* CigLeaderboardView.swift */,
 				AAAD738D2B28FDE8002038AF /* CigaretteGameView.swift */,
 			);
 			path = Cig;
+			sourceTree = "<group>";
+		};
+		AAB60CB92B294F37007AE64D /* Farting */ = {
+			isa = PBXGroup;
+			children = (
+				AAAD738F2B28FFD4002038AF /* FartingGameView.swift */,
+				AAB60CBC2B294FFA007AE64D /* FartingGameScene.swift */,
+				AAB60CBF2B295EBC007AE64D /* FartingLeaderBoardView.swift */,
+			);
+			path = Farting;
+			sourceTree = "<group>";
+		};
+		AAB60CBE2B2950F2007AE64D /* SpriteKit */ = {
+			isa = PBXGroup;
+			children = (
+				AAFCB8372B1F5F650064A4D3 /* Main.storyboard */,
+				AAFCB83C2B1F5F660064A4D3 /* LaunchScreen.storyboard */,
+				AAFCB8352B1F5F650064A4D3 /* GameViewController.swift */,
+				AAFCB8332B1F5F650064A4D3 /* GameScene.swift */,
+				AAFCB8312B1F5F650064A4D3 /* Actions.sks */,
+				AAFCB82F2B1F5F650064A4D3 /* GameScene.sks */,
+			);
+			path = SpriteKit;
+			sourceTree = "<group>";
+		};
+		AAB60CC12B2A06B9007AE64D /* Elevator */ = {
+			isa = PBXGroup;
+			children = (
+				AAAD73942B29001B002038AF /* ElevatorGameView.swift */,
+				AAB60CC32B2A072C007AE64D /* ElevatorGameScene.swift */,
+				AAB60CC72B2A0770007AE64D /* ElevatorLeaderboardView.swift */,
+			);
+			path = Elevator;
+			sourceTree = "<group>";
+		};
+		AAB60CC22B2A06C9007AE64D /* Running */ = {
+			isa = PBXGroup;
+			children = (
+				AAAD73922B28FFF9002038AF /* RunningGameView.swift */,
+				AAB60CC92B2A0C15007AE64D /* RunningGameScene.swift */,
+			);
+			path = Running;
 			sourceTree = "<group>";
 		};
 		AAFCB8212B1F5F640064A4D3 = {
@@ -161,13 +225,8 @@
 				AAAD737A2B28AEB4002038AF /* Nodes */,
 				AAAD73792B28AEA8002038AF /* Scenes */,
 				AAFCB82D2B1F5F640064A4D3 /* AppDelegate.swift */,
-				AAFCB82F2B1F5F650064A4D3 /* GameScene.sks */,
-				AAFCB8312B1F5F650064A4D3 /* Actions.sks */,
-				AAFCB8332B1F5F650064A4D3 /* GameScene.swift */,
-				AAFCB8352B1F5F650064A4D3 /* GameViewController.swift */,
-				AAFCB8372B1F5F650064A4D3 /* Main.storyboard */,
+				AAB60CBE2B2950F2007AE64D /* SpriteKit */,
 				AAFCB83A2B1F5F660064A4D3 /* Assets.xcassets */,
-				AAFCB83C2B1F5F660064A4D3 /* LaunchScreen.storyboard */,
 			);
 			path = DoomsdayNanoDragons;
 			sourceTree = "<group>";
@@ -251,15 +310,24 @@
 			files = (
 				AAAD739C2B2917F7002038AF /* CigLeaderboardView.swift in Sources */,
 				AAFCB8342B1F5F650064A4D3 /* GameScene.swift in Sources */,
+				AAB60CC62B2A074F007AE64D /* ElevatorGameViewModel.swift in Sources */,
+				AAB60CB82B294E82007AE64D /* ContentView.swift in Sources */,
+				AAB60CCC2B2A0C76007AE64D /* RunningGameViewModel.swift in Sources */,
 				AAAD738E2B28FDE8002038AF /* CigaretteGameView.swift in Sources */,
 				AAAD73902B28FFD4002038AF /* FartingGameView.swift in Sources */,
 				AAAD737F2B28AF1B002038AF /* IntroView.swift in Sources */,
+				AAB60CCA2B2A0C15007AE64D /* RunningGameScene.swift in Sources */,
 				AAAD738B2B28C590002038AF /* CigaretteGameScene.swift in Sources */,
 				AAFCB8362B1F5F650064A4D3 /* GameViewController.swift in Sources */,
 				AAAD73932B28FFF9002038AF /* RunningGameView.swift in Sources */,
 				AAAD739A2B290E73002038AF /* CigaretteGameViewModel.swift in Sources */,
+				AAB60CC02B295EBC007AE64D /* FartingLeaderBoardView.swift in Sources */,
+				AAB60CC82B2A0770007AE64D /* ElevatorLeaderboardView.swift in Sources */,
 				AAFCB82E2B1F5F640064A4D3 /* AppDelegate.swift in Sources */,
+				AAB60CC42B2A072C007AE64D /* ElevatorGameScene.swift in Sources */,
 				AAAD73952B29001B002038AF /* ElevatorGameView.swift in Sources */,
+				AAB60CBD2B294FFA007AE64D /* FartingGameScene.swift in Sources */,
+				AAB60CBB2B294F5C007AE64D /* FartingGameViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
