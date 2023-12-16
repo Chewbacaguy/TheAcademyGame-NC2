@@ -86,34 +86,6 @@
 			path = Scenes;
 			sourceTree = "<group>";
 		};
-		AAAD737A2B28AEB4002038AF /* Nodes */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Nodes;
-			sourceTree = "<group>";
-		};
-		AAAD737B2B28AEBA002038AF /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
-		AAAD737C2B28AEC1002038AF /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		AAAD737D2B28AED1002038AF /* Leaderboards */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Leaderboards;
-			sourceTree = "<group>";
-		};
 		AAAD73802B28C038002038AF /* fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,10 +191,6 @@
 			children = (
 				AAAD73882B28C3E1002038AF /* Info.plist */,
 				AAAD73802B28C038002038AF /* fonts */,
-				AAAD737D2B28AED1002038AF /* Leaderboards */,
-				AAAD737C2B28AEC1002038AF /* Resources */,
-				AAAD737B2B28AEBA002038AF /* Utils */,
-				AAAD737A2B28AEB4002038AF /* Nodes */,
 				AAAD73792B28AEA8002038AF /* Scenes */,
 				AAFCB82D2B1F5F640064A4D3 /* AppDelegate.swift */,
 				AAB60CBE2B2950F2007AE64D /* SpriteKit */,
@@ -479,7 +447,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VZ9PFZ46UL;
+				DEVELOPMENT_TEAM = QZYNDY6Q72;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DoomsdayNanoDragons/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -493,7 +461,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Apple-Dev-Academy.DoomsdayNanoDragons";
+				PRODUCT_BUNDLE_IDENTIFIER = "Simone-Mercolino";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -508,7 +476,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VZ9PFZ46UL;
+				DEVELOPMENT_TEAM = QZYNDY6Q72;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DoomsdayNanoDragons/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -522,7 +490,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Apple-Dev-Academy.DoomsdayNanoDragons";
+				PRODUCT_BUNDLE_IDENTIFIER = "Simone-Mercolino";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
