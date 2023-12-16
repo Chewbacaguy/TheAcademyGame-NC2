@@ -27,9 +27,10 @@ struct RunningGameView: View {
                       
             if showGameScene {
             // Add the SpriteView for your game scene in the background
-            SpriteView(scene: RunningGameScene(size: UIScreen.main.bounds.size))
-                .edgesIgnoringSafeArea(.all)
-                .transition(.opacity)
+                
+         //   SpriteView(scene: RunningGameScene(size: UIScreen.main.bounds.size))
+            //    .edgesIgnoringSafeArea(.all)
+            //    .transition(.opacity)
             } else {
                 VStack {
                     Spacer()
@@ -120,8 +121,12 @@ struct RunningGameView: View {
     }
 }
 
+
+ 
+
 struct RunningGameView_Previews: PreviewProvider {
     static var previews: some View {
         RunningGameView()
     }
 }
+

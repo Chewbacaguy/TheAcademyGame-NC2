@@ -10,7 +10,13 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
-
+    @Published var score = 0
+    @Published var isGameRunning = false
+    @Published var isGameOver = false
+    @Published var currentFrame = 0
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,12 +37,17 @@ class GameViewController: UIViewController {
         }
     }
 
+    override var shouldAutorotate: Bool {
+        return true
+    }
+
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
-        } else {
-            return .all
-        }
+        return .landscapeRight
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Release any cached data, images, etc that aren't in use.
     }
 
     override var prefersStatusBarHidden: Bool {
