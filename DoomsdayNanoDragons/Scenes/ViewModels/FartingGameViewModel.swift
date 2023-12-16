@@ -12,8 +12,14 @@ class FartingGameViewModel: ObservableObject {
     @Published var isGameRunning = false
     @Published var isGameOver = false
     @Published var currentFrame = 0
-    
-    
+    @Published var vasillyTurnCount = 0
+    @Published var lastUpdateTime: TimeInterval = 0
+    @Published var timeRemaining = 60
+
+    var vasiliThinking = true
+    var vasiliLooking = false
+    var vasiliAngry = false
+
     // Function to increment the score
     func incrementScore() {
         score += 1
@@ -23,7 +29,7 @@ class FartingGameViewModel: ObservableObject {
     func decrementScoreBy(_ value: Int) {
         score -= value
         if score < 0 {
-            score = 0 // Ensure the score doesn't go negative
+            score = 0
         }
     }
 
@@ -37,5 +43,17 @@ class FartingGameViewModel: ObservableObject {
         score = 0
         isGameRunning = false
         currentFrame = 0
+        vasillyTurnCount = 0
+        vasiliThinking = true
+        vasiliLooking = false
+        vasiliAngry = false
     }
+
+    // Function to start the game
+    func startGame() {
+        resetGame()
+        isGameRunning = true
+    }
+    
 }
+

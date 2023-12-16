@@ -4,111 +4,335 @@
 //
 //  Created by Santiago Torres Alvarez on 13/12/23.
 //
-
-
 import SpriteKit
-import SwiftUI
+import GameplayKit
 
-class RunningGameScene: SKScene {
-    @ObservedObject var viewModel: RunningGameViewModel
-    @Binding var isAnimationStarted: Bool
-    @Binding var isGameOver: Bool
+class RunningGameScene: SKScene, SKPhysicsContactDelegate {
     
-    var animationTextures: [SKTexture] = []
-    var animatedNode: SKSpriteNode!
-    var repeatAction: SKAction!
-    var frameNumber = 0 // Track the frame number
-    var isTouchingScreen = false
-    var isFrame21Tapped = false
-    var timeRemaining = 60 // Total time for the game
-    var vasillyTurnCount = 0 // Count for Vasilly turning
+    //nodes
+    var gameNode: SKNode!
+    var groundNode: SKNode!
+    var backgroundNode: SKNode!
+    var cactusNode: SKNode!
+    var dinosaurNode: SKNode!
+    var birdNode: SKNode!
     
-    // Declare sprite nodes for your assets
-    var vasiliNormal: SKSpriteNode!
-    var vasiliLooking: SKSpriteNode!
-    var santoNormal: SKSpriteNode!
-    var santoFarting: SKSpriteNode!
-    var stefanoNormal: SKSpriteNode!
-    var stefanoFarting: SKSpriteNode!
+    //score
+    var scoreNode: SKLabelNode!
+    var resetInstructions: SKLabelNode!
+    var score = 0 as Int
+    
+    //sound effects
+    let jumpSound = SKAction.playSoundFileNamed("dino.assets/sounds/jump", waitForCompletion: false)
+    let dieSound = SKAction.playSoundFileNamed("dino.assets/sounds/die", waitForCompletion: false)
+    
+    //sprites
+    var dinoSprite: SKSpriteNode!
+    
+    //spawning vars
+    var spawnRate = 1.5 as Double
+    var timeSinceLastSpawn = 0.0 as Double
+    
+    //generic vars
+    var groundHeight: CGFloat?
+    var dinoYPosition: CGFloat?
+    var groundSpeed = 500 as CGFloat
+    
+    //consts
+   
+    
+   
+    
+    let background = 0 as CGFloat
+    let foreground = 1 as CGFloat
+    
+    //collision categories
+    
+       let dinoHopForce: CGFloat = 700
+       let groundCategory: UInt32 = 1 << 0
+       let dinoCategory: UInt32 = 1 << 1
+       let cactusCategory: UInt32 = 1 << 2
     
     
-    init(size: CGSize, viewModel: RunningGameViewModel, isAnimationStarted: Binding<Bool>, isGameOver: Binding<Bool>) {
-        self.viewModel = viewModel
-        self._isAnimationStarted = isAnimationStarted
-        self._isGameOver = isGameOver
-        super.init(size: size)
+    override func didMove(to view: SKView) {
         
-        // Set the background image
-        let backgroundImage = SKSpriteNode(imageNamed: "FondoFarting")
-        backgroundImage.size = self.size
-        backgroundImage.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
-        backgroundImage.zPosition = -1 // Place it behind other nodes
-        addChild(backgroundImage)
+       
         
-        // Load animation textures
-        for i in 1...22 {
-            let texture = SKTexture(imageNamed: "YourAnimationPrefix\(i)")
-            animationTextures.append(texture)
+        self.physicsWorld.contactDelegate = self
+        self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -9.8)
+        
+        var backgroundNode: SKSpriteNode!
+        // ground
+        groundNode = SKNode()
+        groundNode.zPosition = foreground // Set groundNode's z-position to foreground
+        createAndMoveGround()
+        addCollisionToGround()
+        
+        //background elements
+        let backgroundTexture = SKTexture(imageNamed: "Background")
+        backgroundNode = SKSpriteNode(texture: backgroundTexture)
+        backgroundNode.zPosition = background // Set backgroundNode's z-position to background
+        backgroundNode.size = CGSize(width: self.size.width, height: self.size.height) // Set the size of the background to match the scene size
+        backgroundNode.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2) // Center the background
+        
+        
+        
+        
+        //dinosaur
+        dinosaurNode = SKNode()
+        dinosaurNode.zPosition = foreground
+        createDinosaur()
+        
+        //cacti
+        cactusNode = SKNode()
+        cactusNode.zPosition = foreground
+        
+        
+        //score
+        score = 0
+        scoreNode = SKLabelNode(fontNamed: "Luckiest Guy")
+        scoreNode.fontSize = 30
+        scoreNode.zPosition = foreground
+        scoreNode.text = "Score: 0"
+        scoreNode.fontColor = SKColor.white
+        scoreNode.position = CGPoint(x: 120, y: 35)
+        
+        
+        //reset instructions
+        resetInstructions = SKLabelNode(fontNamed: "Luckiest Guy")
+        resetInstructions.fontSize = 50
+        resetInstructions.text = "Tap 2 Restart"
+        resetInstructions.fontColor = SKColor.white
+        resetInstructions.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+        
+        //parent game node
+        gameNode = SKNode()
+        gameNode.addChild(backgroundNode)
+        gameNode.addChild(groundNode)
+        gameNode.addChild(dinosaurNode)
+        gameNode.addChild(cactusNode)
+        gameNode.addChild(scoreNode)
+        gameNode.addChild(resetInstructions)
+        self.addChild(gameNode)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if(gameNode.speed < 1.0){
+            resetGame()
+            return
         }
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func update(_ currentTime: TimeInterval) {
-        if isAnimationStarted && !isGameOver {
-            // Update game timer
-            if timeRemaining > 0 {
-                timeRemaining -= 1
-                
-                // Check for Vasilly turning
-                if timeRemaining < 60 && vasillyTurnCount < 5 {
-                    // Implement random chance for Vasilly turning
-                    let random = Int.random(in: 0..<100)
-                    if random < 5 { // Adjust this value for your desired chance (e.g., 5%)
-                        vasillyTurnCount += 1
-                        // Handle Vasilly turning here
-                        
-                        // Change Vasilly's state to "looking"
-                    }
+        
+        for _ in touches {
+            if let groundPosition = dinoYPosition {
+                if dinoSprite.position.y <= groundPosition && gameNode.speed > 0 {
+                    dinoSprite.physicsBody?.applyImpulse(CGVector(dx: 0, dy: dinoHopForce))
+                    run(jumpSound)
                 }
-                
-                // Handle scoring based on actions and states
-                if isTouchingScreen {
-                    if isFrame21Tapped {
-                        // You tapped on frame 21
-                        viewModel.incrementScore()
-                        animatedNode.removeAction(forKey: "animationKey")
-                        // Handle scoring based on Vasilly's state here
-                        if vasillyTurnCount == 0 {
-                            viewModel.incrementScoreBy(5)
-                        } else {
-                            viewModel.decrementScoreBy(40)
-                        }
-                    } else {
-                        // You didn't tap on frame 21
-                        viewModel.isGameRunning = false
-                        isGameOver = true
-                        stopAnimation()
-                    }
-                    isTouchingScreen = false
-                } else {
-                    // Not touching the screen, decrement score or do nothing
-                    if vasillyTurnCount == 0 {
-                        viewModel.decrementScoreBy(1)
-                    }
-                }
-            } else {
-                // Game over when the timer reaches 0
-                viewModel.isGameRunning = false
-                isGameOver = true
-                stopAnimation()
             }
         }
     }
     
-    func stopAnimation() {
-        animatedNode.removeAction(forKey: "animationKey")
+    override func update(_ currentTime: TimeInterval) {
+        // Called before each frame is rendered
+        if(gameNode.speed > 0){
+            groundSpeed += 0.2
+            
+            score += 1
+            scoreNode.text = "Score: \(score/5)"
+            
+            if(currentTime - timeSinceLastSpawn > spawnRate){
+                timeSinceLastSpawn = currentTime
+                spawnRate = Double.random(in: 1.0 ..< 3.5)
+                
+                if(Int.random(in: 0...10) < 8){
+                    spawnCactus()
+                } else {
+                    
+                }
+            }
+        }
     }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        if(hitCactus(contact)){
+            run(dieSound)
+            gameOver()
+        }
+    }
+    
+    func hitCactus(_ contact: SKPhysicsContact) -> Bool {
+        return contact.bodyA.categoryBitMask & cactusCategory == cactusCategory ||
+        contact.bodyB.categoryBitMask & cactusCategory == cactusCategory
+    }
+    
+    
+    
+    func resetGame() {
+        gameNode.speed = 1.0
+        timeSinceLastSpawn = 0.0
+        groundSpeed = 500
+        score = 0
+        
+        cactusNode.removeAllChildren()
+        birdNode.removeAllChildren()
+        
+        resetInstructions.fontColor = SKColor.white
+        
+        let dinoTexture1 = SKTexture(imageNamed: "dinoRight")
+        let dinoTexture2 = SKTexture(imageNamed: "dinoLeft")
+        dinoTexture1.filteringMode = .nearest
+        dinoTexture2.filteringMode = .nearest
+        
+        let runningAnimation = SKAction.animate(with: [dinoTexture1, dinoTexture2], timePerFrame: 0.12)
+        
+        dinoSprite.position = CGPoint(x: self.frame.size.width * 0.15, y: dinoYPosition!)
+        dinoSprite.run(SKAction.repeatForever(runningAnimation))
+    }
+    
+    func gameOver() {
+        gameNode.speed = 0.0
+        
+        resetInstructions.fontColor = SKColor.gray
+        
+        let deadDinoTexture = SKTexture(imageNamed: "dinoDead")
+        deadDinoTexture.filteringMode = .nearest
+        
+        dinoSprite.removeAllActions()
+        dinoSprite.texture = deadDinoTexture
+    }
+    
+    func createAndMoveGround() {
+        let screenWidth = self.frame.size.width
+        
+        // ground texture
+        let groundTexture = SKTexture(imageNamed: "Background")
+        groundTexture.filteringMode = .nearest
+        
+        groundHeight = groundTexture.size().height
+        
+        // ground actions
+        let moveGroundLeft = SKAction.moveBy(x: -groundTexture.size().width, y: 0.0, duration: TimeInterval(screenWidth / groundSpeed))
+        let resetGround = SKAction.moveBy(x: groundTexture.size().width, y: 0.0, duration: 0.0)
+        let groundLoop = SKAction.sequence([moveGroundLeft, resetGround])
+        
+        // ground nodes
+        let numberOfGroundNodes = 1 + Int(ceil(screenWidth / groundTexture.size().width))
+        
+        for i in 0 ..< numberOfGroundNodes {
+            let node = SKSpriteNode(texture: groundTexture)
+            node.anchorPoint = CGPoint(x: 0.0, y: 0.0)
+            node.position = CGPoint(x: CGFloat(i) * groundTexture.size().width, y: 0.0)
+            node.zPosition = -5
+            groundNode.addChild(node)
+            node.run(SKAction.repeatForever(groundLoop))
+        }
+        
+    }
+    
+    func addCollisionToGround() {
+        let groundContactNode = SKNode()
+        groundContactNode.position = CGPoint(x: 0, y: groundHeight! - 30)
+        groundContactNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.frame.size.width * 3, height: groundHeight!))
+        groundContactNode.physicsBody?.friction = 0.0
+        groundContactNode.physicsBody?.restitution = 0.0 // Prevent bouncing
+        groundContactNode.physicsBody?.isDynamic = false
+        groundContactNode.physicsBody?.categoryBitMask = groundCategory
+        
+        groundNode.addChild(groundContactNode)
+    }
+    
+    
+    
+    func createDinosaur() {
+        let screenWidth = self.frame.size.width
+        let dinoScale = 2.0 as CGFloat
+        
+        //textures
+        let dinoTexture1 = SKTexture(imageNamed: "dinoRight")
+        let dinoTexture2 = SKTexture(imageNamed: "dinoLeft")
+        dinoTexture1.filteringMode = .nearest
+        dinoTexture2.filteringMode = .nearest
+        
+        let runningAnimation = SKAction.animate(with: [dinoTexture1, dinoTexture2], timePerFrame: 0.12)
+        
+        dinoSprite = SKSpriteNode()
+        dinoSprite.size = dinoTexture1.size()
+        dinoSprite.setScale(dinoScale)
+        dinoSprite.zPosition = 3
+        dinosaurNode.addChild(dinoSprite)
+        
+        let physicsBox = CGSize(width: dinoTexture1.size().width * dinoScale,
+                                height: dinoTexture1.size().height * dinoScale)
+        
+        dinoSprite.physicsBody = SKPhysicsBody(rectangleOf: physicsBox)
+        dinoSprite.physicsBody?.isDynamic = true
+        dinoSprite.physicsBody?.mass = 1.0
+        dinoSprite.physicsBody?.categoryBitMask = dinoCategory
+       
+        dinoSprite.physicsBody?.collisionBitMask = groundCategory
+        
+        dinoYPosition = getGroundHeight() + dinoTexture1.size().height * dinoScale
+        dinoSprite.position = CGPoint(x: 150, y: 400 /*getGroundHeight() + dinoTexture1.size().height * dinoScale*/) // Adjust position
+        dinoSprite.zPosition = 3
+        dinoSprite.run(SKAction.repeatForever(runningAnimation))
+        dinoSprite.physicsBody?.allowsRotation = false  // Prevents rotation
+        dinoSprite.physicsBody?.affectedByGravity = false
+       
+        dinoSprite.zRotation = 0
+    }
+    
+    func spawnCactus() {
+        let cactusTextures = ["cactus1", "cactus2", "cactus3", "cactus4"]
+        let cactusScale = 1.0 as CGFloat
+        
+        //texture
+        let cactusTexture = SKTexture(imageNamed: "cacti" + cactusTextures.randomElement()!)
+        cactusTexture.filteringMode = .nearest
+        
+        //sprite
+        let cactusSprite = SKSpriteNode(texture: cactusTexture)
+        cactusSprite.setScale(cactusScale)
+        
+        //physics
+        let contactBox = CGSize(width: cactusTexture.size().width * cactusScale,
+                                height: cactusTexture.size().height * cactusScale)
+        cactusSprite.physicsBody = SKPhysicsBody(rectangleOf: contactBox)
+        cactusSprite.physicsBody?.isDynamic = true
+        cactusSprite.physicsBody?.mass = 1.0
+        cactusSprite.physicsBody?.categoryBitMask = cactusCategory
+        cactusSprite.physicsBody?.contactTestBitMask = dinoCategory
+        cactusSprite.physicsBody?.collisionBitMask = groundCategory
+        cactusSprite.physicsBody?.affectedByGravity = false
+
+        
+        //add to scene
+        cactusNode.addChild(cactusSprite)
+        //animate
+        animateCactus(sprite: cactusSprite, texture: cactusTexture)
+    }
+    
+    func animateCactus(sprite: SKSpriteNode, texture: SKTexture) {
+        let screenWidth = self.frame.size.width
+        let distanceOffscreen = 50.0 as CGFloat
+        let distanceToMove = screenWidth + distanceOffscreen + texture.size().width
+        
+        //actions
+        let moveCactus = SKAction.moveBy(x: -distanceToMove, y: 0.0, duration: TimeInterval(screenWidth / groundSpeed))
+        let removeCactus = SKAction.removeFromParent()
+        let moveAndRemove = SKAction.sequence([moveCactus, removeCactus])
+        
+        sprite.position = CGPoint(x: distanceToMove, y: getGroundHeight() + texture.size().height)
+        sprite.run(moveAndRemove)
+    }
+    
+    
+    func getGroundHeight() -> CGFloat {
+        if let gHeight = groundHeight {
+            return gHeight
+        } else {
+            print("Ground size wasn't previously calculated")
+            exit(0)
+        }
+    }
+    
 }

@@ -5,75 +5,84 @@
 //  Created by Santiago Torres Alvarez on 13/12/23.
 //
 
+// ElevatorLeaderboardView.swift
 
 import SwiftUI
-import SpriteKit
-
 
 struct ElevatorLeaderboardView: View {
-    var topCatches: [Int] // Replace this with your actual leaderboard data
-    
+    var topCatches: [Int]
+    var winningTime: Int
+
     var body: some View {
         VStack {
             RoundedRectangle(cornerRadius: 20)
                 .frame(width: 319, height: 236)
                 .foregroundColor(Color.white)
                 .overlay(
-                    RoundedRectangle(cornerRadius: 20) // Add another RoundedRectangle as an overlay
-                        .stroke(Color.black, lineWidth: 6) // Add a border stroke with rounded corners
-                        .frame(width: 319, height: 236) // Match the size of the rounded rectangle
-                        .opacity(1) // Adjust the opacity as needed
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color.black, lineWidth: 6)
+                        .frame(width: 319, height: 236)
+                        .opacity(1)
                 )
                 .overlay(
                     VStack(spacing: 3) {
                         Text("Punctual Students")
-                            .font(Font.custom("Luckiest Guy", size: 36))
-                            .frame(width: 290, height: 35)
-                        
-                        Text("Best tappers")
-                            .font(Font.custom("Luckiest Guy", size: 16))
+                            .font(Font.custom("Luckiest Guy", size: 32))
+                            .frame(width: 500, height: 35)
+
+                        Text("Your Winning Time:")
+                            .font(Font.custom("Luckiest Guy", size: 20))
                             .frame(width: 280, height: 20)
                             .padding(.top, -3)
-                        
-                        // NEEDS LOGIC FOR BEST TIMES, not top catches
+
+                        HStack {
+                            Text("\(winningTime) ")
+                                .font(Font.custom("Luckiest Guy", size: 25))
+                                .foregroundColor(.black)
+
+                            Text("sec")
+                                .font(Font.custom("Luckiest Guy", size: 25))
+                                .foregroundColor(Color(#colorLiteral(red: 0.72, green: 0, blue: 0, alpha: 1)))
+                        }
+                        .padding(.bottom, 3)
+
                         ForEach(0..<topCatches.count, id: \.self) { index in
                             HStack {
                                 Text("\(topCatches[index]) ")
                                     .font(Font.custom("Luckiest Guy", size: 25))
                                     .foregroundColor(.black)
-                                
+
                                 Text("sec")
                                     .font(Font.custom("Luckiest Guy", size: 25))
                                     .foregroundColor(Color(#colorLiteral(red: 0.72, green: 0, blue: 0, alpha: 1)))
                             }
-                            .padding(.bottom, 3) // Move this line inside HStack
+                            .padding(.bottom, 3)
                         }
                     }
                 )
-            
+
             Button(action: {
                 // Handle exit button click
                 // NAVIGATE BACK TO CONTENTVIEW
             }) {
                 Text("EXIT")
-                    .font(Font.custom("Luckiest Guy", size: 30)) // Adjust the font size
+                    .font(Font.custom("Luckiest Guy", size: 30))
                     .foregroundColor(Color(#colorLiteral(red: 0.72, green: 0, blue: 0, alpha: 1)))
-                    .frame(width: 138.77, height: 53) // Adjust the frame size
+                    .frame(width: 138.77, height: 53)
                     .background(Color.white)
                     .cornerRadius(3.0)
                     .overlay(
                         RoundedRectangle(cornerRadius: 3)
-                            .stroke(Color.black, lineWidth: 6) // Add a border stroke
+                            .stroke(Color.black, lineWidth: 6)
                     )
-                    .padding(.top, -25) // Add top padding
+                    .padding(.top, -25)
             }
         }
     }
 }
 
-
 struct ElevatorLeaderboardView_Previews: PreviewProvider {
     static var previews: some View {
-        FartingLeaderboardView(topCatches: [4,5,6])
+        ElevatorLeaderboardView(topCatches: [4, 5, 6], winningTime: 10)
     }
 }

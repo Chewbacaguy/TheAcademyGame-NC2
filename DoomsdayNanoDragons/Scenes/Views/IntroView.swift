@@ -22,7 +22,7 @@ struct IntroView: View {
                             
                             Spacer() // Add spacer to center the buttons vertically
                             
-                            NavigationLink(destination: FartingGameView()) {
+                            NavigationLink(destination: FartingGameView(time: .constant(60), currentTime: .constant(TimeInterval(10)))){
                                 Text("TAP 2 FART!")
                                     .font(Font.custom("Luckiest Guy", size: 30))
                                     .frame(width: 280, height: 72)

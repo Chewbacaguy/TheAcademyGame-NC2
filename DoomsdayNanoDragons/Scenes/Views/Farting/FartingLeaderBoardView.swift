@@ -7,7 +7,6 @@
 
 import SwiftUI
 import SpriteKit
-import SwiftUI
 
 struct FartingLeaderboardView: View {
     var topCatches: [Int] // Replace this with your actual leaderboard data
