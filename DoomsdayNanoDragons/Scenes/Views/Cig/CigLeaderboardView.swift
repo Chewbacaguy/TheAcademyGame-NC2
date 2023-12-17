@@ -47,25 +47,7 @@ struct CigLeaderboardView: View {
                         }
                     }
                 )
-                
-            
-            
-            Button(action: {
-                // Handle exit button click
-            }) {
-                Text("EXIT")
-                    .font(Font.custom("Luckiest Guy", size: 30)) // Adjust the font size
-                    .foregroundColor(Color(#colorLiteral(red: 0.72, green: 0, blue: 0, alpha: 1)))
-                    .frame(width: 138.77, height: 53) // Adjust the frame size
-                    .background(Color.white)
-                    .cornerRadius(3.0)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 3)
-                            .stroke(Color.black, lineWidth: 6) // Add a border stroke
-                    )
-                    .padding(.top, -25) // Add top padding
-                // .shadow(color: .black, radius: 5, x: 4, y: 5)
-            }
+              
         }
     }
 }

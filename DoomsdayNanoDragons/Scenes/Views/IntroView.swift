@@ -47,15 +47,15 @@ struct IntroView: View {
                             }
                             .buttonStyle(IntroButtonStyle())
                             
-                           
-                            NavigationLink(destination: ()) {
-                                Text("TAP 2 RUN!")
-                                    .font(Font.custom("Luckiest Guy", size: 30))
-                                    .frame(width: 280, height: 72)
-                                    .padding(10)
-                            }
-                            .buttonStyle(IntroButtonStyle())
-                           
+                           /*
+                                NavigationLink(destination: ()) {
+                                    Text("TAP 2 RUN!")
+                                        .font(Font.custom("Luckiest Guy", size: 30))
+                                        .frame(width: 280, height: 72)
+                                        .padding(10)
+                                }
+                                .buttonStyle(IntroButtonStyle())
+                           */
                             // Add similar buttons for other games
                             
                             Image("TheAcaGame")

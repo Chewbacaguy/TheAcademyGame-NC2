@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "9BBE7DA0-D3BB-48AE-A5B7-0BF6E501E2B2"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CE43B0BF-0DC1-4D33-B905-21C24369142E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DoomsdayNanoDragons/Scenes/Views/IntroView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "590530DA-B926-4C62-A06B-78D5E42F57C0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DoomsdayNanoDragons/Scenes/ViewModels/RunningGameViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "590530DA-B926-4C62-A06B-78D5E42F57C0 - ec54e60f80908a12"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DoomsdayNanoDragons.RunningGameViewModel.deinit"
+                  moduleName = "DoomsdayNanoDragons"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/simonemercolino/Desktop/TheAcademyGame-NC2/DoomsdayNanoDragons/Scenes/ViewModels/RunningGameViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "590530DA-B926-4C62-A06B-78D5E42F57C0 - 7bfab241fd231607"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DoomsdayNanoDragons.RunningGameViewModel.__deallocating_deinit"
+                  moduleName = "DoomsdayNanoDragons"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/simonemercolino/Desktop/TheAcademyGame-NC2/DoomsdayNanoDragons/Scenes/ViewModels/RunningGameViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "590530DA-B926-4C62-A06B-78D5E42F57C0 - 5d87c3447f01cb07"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DoomsdayNanoDragons.RunningGameViewModel.__allocating_init() -&gt; DoomsdayNanoDragons.RunningGameViewModel"
+                  moduleName = "DoomsdayNanoDragons"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/simonemercolino/Desktop/TheAcademyGame-NC2/DoomsdayNanoDragons/Scenes/ViewModels/RunningGameViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "590530DA-B926-4C62-A06B-78D5E42F57C0 - 828b6b1ad6261a3e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DoomsdayNanoDragons.RunningGameViewModel.init() -&gt; DoomsdayNanoDragons.RunningGameViewModel"
+                  moduleName = "DoomsdayNanoDragons"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/simonemercolino/Desktop/TheAcademyGame-NC2/DoomsdayNanoDragons/Scenes/ViewModels/RunningGameViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "360">
+               </Location>
+               <Location
+                  uuid = "590530DA-B926-4C62-A06B-78D5E42F57C0 - 828b6b1ad6261a3e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DoomsdayNanoDragons.RunningGameViewModel.init() -&gt; DoomsdayNanoDragons.RunningGameViewModel"
+                  moduleName = "DoomsdayNanoDragons"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/simonemercolino/Desktop/TheAcademyGame-NC2/DoomsdayNanoDragons/Scenes/ViewModels/RunningGameViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "400">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

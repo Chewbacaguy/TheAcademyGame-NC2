@@ -6,14 +6,18 @@
 //
 
 import Foundation
+import SpriteKit
+import GameplayKit
+
+
 
 class RunningGameViewModel: ObservableObject {
+    
     @Published var score = 0
     @Published var isGameRunning = false
     @Published var isGameOver = false
     @Published var currentFrame = 0
-    
-    
+   
     // Function to increment the score
     func incrementScore() {
         score += 1
@@ -40,4 +44,19 @@ class RunningGameViewModel: ObservableObject {
     }
 }
 
+/*
+class RunningGameCoordinator: NSObject, ObservableObject {
+    @Published var scene: SKScene?
+    
 
+    override init() {
+        super.init()
+        loadScene()
+    }
+
+    func loadScene() {
+           let runningScene = RunningGameScene(size: UIScreen.main.bounds.size)
+           scene = runningScene
+       }
+   }
+ /**/*/

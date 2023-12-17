@@ -25,4 +25,9 @@ class CigaretteGameViewModel: ObservableObject {
         isGameRunning = false
         currentFrame = 0
     }
+    
+    
+    func incrementScore(by value: Int) {
+           score += value
+       }
 }

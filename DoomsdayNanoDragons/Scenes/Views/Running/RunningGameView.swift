@@ -8,6 +8,8 @@
 import SwiftUI
 import SpriteKit
 
+import GameplayKit
+
 
 struct RunningGameView: View {
      @State private var isAnimationStarted = false
@@ -15,7 +17,8 @@ struct RunningGameView: View {
         @State private var isLeaderboardVisible = false
         @StateObject private var viewModel = RunningGameViewModel()
         @State private var showGameScene = false // New state to control the game scene visibility
-        
+   // @ObservedObject var coordinator = RunningGameCoordinator()
+
     
     var body: some View {
         ZStack {
@@ -26,11 +29,11 @@ struct RunningGameView: View {
                           .edgesIgnoringSafeArea(.all)
                       
             if showGameScene {
-            // Add the SpriteView for your game scene in the background
-                
-         //   SpriteView(scene: RunningGameScene(size: UIScreen.main.bounds.size))
-            //    .edgesIgnoringSafeArea(.all)
-            //    .transition(.opacity)
+                            /* Import and use RunningGameScene here within SpriteView
+                SpriteView(scene: scene)
+                                  .edgesIgnoringSafeArea(.all)
+                                  .transition(.opacity)
+                             */
             } else {
                 VStack {
                     Spacer()

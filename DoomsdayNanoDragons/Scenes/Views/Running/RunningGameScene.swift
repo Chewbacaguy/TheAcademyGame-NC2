@@ -1,11 +1,12 @@
 //
 //  GameScene.swift
-//  DinoRunner
+//
 //
 
 
 import SpriteKit
 import GameplayKit
+import Foundation
 
 class RuunningGameScene: SKScene, SKPhysicsContactDelegate {
     

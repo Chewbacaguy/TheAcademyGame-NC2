@@ -14,7 +14,8 @@ class GameViewController: UIViewController {
     @Published var isGameRunning = false
     @Published var isGameOver = false
     @Published var currentFrame = 0
-    
+    @Published var scene: SKScene?
+
     
     
     override func viewDidLoad() {
