@@ -44,7 +44,7 @@ class FartingGameScene: SKScene {
     var timerLabel: SKLabelNode?
     
     
-    
+    var buttonSprite: SKSpriteNode!
     
     //startTime:  Binding<Bool>,
     
@@ -134,6 +134,10 @@ class FartingGameScene: SKScene {
         stefanoNormal.isHidden = false
         stefanoFarting.isHidden = true
         
+        
+        
+        
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -176,14 +180,19 @@ class FartingGameScene: SKScene {
     // Handle button press and score updates
     private func handleButtonPress() {
         if isButtonPressed {
+            print("pressing button")
             // Start incrementing the score by 5 points per second
             showSantoAndStefanoFarting()
+            scoreDecrementAction = nil
             if scoreIncrementAction == nil {
+                let scaleDownAction = SKAction.scale(by: 0.9, duration: 0.1) // Scale down by 10% in 0.1 seconds
+                buttonSprite.run(scaleDownAction) // Apply the scale down effect to the button
+
                 let incrementAction = SKAction.repeatForever(
                     SKAction.sequence([
                         SKAction.wait(forDuration: 1.0),
                         SKAction.run {
-                            self.viewModel.incrementScoreBy(3)
+                            self.viewModel.incrementScoreBy(20)
                         }
                     ])
                 )
@@ -191,10 +200,14 @@ class FartingGameScene: SKScene {
                 run(incrementAction, withKey: "scoreIncrement")
             }
         } else {
+            print("stopped pressing")
             // Stop incrementing the score
             removeAction(forKey: "scoreIncrement")
-            scoreIncrementAction = nil
+            //scoreIncrementAction = nil
             // Start decrementing Score
+           // let scaleUpAction = SKAction.scale(by: 1.1, duration: 0.1) // Scale back to normal by 10% in 0.1 seconds
+           // buttonSprite.run(scaleUpAction) // Apply the scale up effect to the button
+
             let decrementAction = SKAction.repeatForever(
                 SKAction.sequence([
                     SKAction.wait(forDuration: 1.0),

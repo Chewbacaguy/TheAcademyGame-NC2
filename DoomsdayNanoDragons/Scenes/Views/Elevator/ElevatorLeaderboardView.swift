@@ -64,6 +64,7 @@ struct ElevatorLeaderboardView: View {
             Button(action: {
                 // Handle exit button click
                 // NAVIGATE BACK TO CONTENTVIEW
+                NavigationLink("Intro", destination: IntroView())
             }) {
                 Text("EXIT")
                     .font(Font.custom("Luckiest Guy", size: 30))
