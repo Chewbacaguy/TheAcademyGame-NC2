@@ -17,10 +17,11 @@ class FartingGameScene: SKScene {
     @Binding var isSantoFarting: Bool
     @Binding var isStefanoFarting: Bool
     
-    
+    private var isVasillyAngry = false
     private var countdownTimer: Timer?
     private var timeRemaining = 60 // Initial time remaining in seconds
-    
+    private var scoreIncrementAction: SKAction?
+    private var scoreDecrementAction: SKAction?
     
     var animationTextures: [SKTexture] = []
     var animatedNode: SKSpriteNode!
@@ -42,6 +43,9 @@ class FartingGameScene: SKScene {
     var startTime: Bool
     var timerLabel: SKLabelNode?
     
+    
+    
+    
     //startTime:  Binding<Bool>,
     
     init(size: CGSize, viewModel: FartingGameViewModel, isAnimationStarted: Binding<Bool>, isGameOver: Binding<Bool>,  isButtonPressed: Binding<Bool>, isSantoFarting: Binding<Bool>, isStefanoFarting: Binding<Bool>) {
@@ -52,6 +56,7 @@ class FartingGameScene: SKScene {
         self._isSantoFarting = isSantoFarting
         self._isStefanoFarting = isStefanoFarting
         self.startTime = false
+        
         super.init(size: size)
         
         // Set the background image
@@ -60,6 +65,15 @@ class FartingGameScene: SKScene {
         backgroundImage.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
         backgroundImage.zPosition = -1 // Place it behind other nodes
         addChild(backgroundImage)
+        
+        //EXPERIMENT
+        let buttonTexture = SKTexture(imageNamed: "FartButton")
+        let buttonSprite = SKSpriteNode(texture: buttonTexture)
+        buttonSprite.position = CGPoint(x: 200, y: 90) // Adjust the position as needed
+        buttonSprite.name = "gameButton" // Set a name to identify the button later
+        addChild(buttonSprite)
+        
+        
         
         // Create a white background node with rounded corners and black border
         let backgroundNode = SKShapeNode(rect: CGRect(x: -5, y: -5, width: 140, height: 40), cornerRadius: 15)
@@ -83,7 +97,7 @@ class FartingGameScene: SKScene {
         
         // Load and set up your assets
         vasiliLooking = SKSpriteNode(imageNamed: "VasiliLooking")
-        vasiliThinking = SKSpriteNode(imageNamed: "VasiliThinking")
+        vasiliThinking = SKSpriteNode(imageNamed: "VasilliThinking")
         vasiliAngry = SKSpriteNode(imageNamed: "VasiliAngry")
         santoNormal = SKSpriteNode(imageNamed: "SantoNormal")
         santoFarting = SKSpriteNode(imageNamed: "SantoFarting")
@@ -113,13 +127,17 @@ class FartingGameScene: SKScene {
         
         // Set the initial visibility of the assets
         vasiliThinking.isHidden = false
-        vasiliAngry.isHidden = false
+        vasiliAngry.isHidden = true
         vasiliLooking.isHidden = true
         santoNormal.isHidden = false
         santoFarting.isHidden = true
         stefanoNormal.isHidden = false
         stefanoFarting.isHidden = true
         
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     
@@ -140,6 +158,8 @@ class FartingGameScene: SKScene {
                 timer.invalidate()
                 self.viewModel.isGameRunning = false
                 self.isGameOver = true
+                //   self.showLeaderboardsView()
+                
                 // Handle game over logic...
             }
         }
@@ -153,23 +173,17 @@ class FartingGameScene: SKScene {
     }
     
     
-    
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private var scoreIncrementAction: SKAction?
-    
-    private func handleButtonPress(_ isPressed: Bool) {
-        if isPressed {
+    // Handle button press and score updates
+    private func handleButtonPress() {
+        if isButtonPressed {
             // Start incrementing the score by 5 points per second
+            showSantoAndStefanoFarting()
             if scoreIncrementAction == nil {
                 let incrementAction = SKAction.repeatForever(
                     SKAction.sequence([
                         SKAction.wait(forDuration: 1.0),
                         SKAction.run {
-                            self.viewModel.incrementScoreBy(5)
+                            self.viewModel.incrementScoreBy(3)
                         }
                     ])
                 )
@@ -180,8 +194,20 @@ class FartingGameScene: SKScene {
             // Stop incrementing the score
             removeAction(forKey: "scoreIncrement")
             scoreIncrementAction = nil
+            // Start decrementing Score
+            let decrementAction = SKAction.repeatForever(
+                SKAction.sequence([
+                    SKAction.wait(forDuration: 1.0),
+                    SKAction.run {
+                        self.viewModel.decrementScoreBy(1)
+                    }
+                ])
+            )
+            scoreDecrementAction = decrementAction
+            run(decrementAction, withKey: "scoreDecrement")
         }
     }
+    
     
     private func hideSantoAndStefanoFarting() {
         isSantoFarting = false
@@ -192,30 +218,60 @@ class FartingGameScene: SKScene {
         stefanoFarting.isHidden = true
     }
     
+    private func showSantoAndStefanoFarting() {
+        isSantoFarting = true
+        isStefanoFarting = true
+        santoNormal.isHidden = true
+        santoFarting.isHidden = false
+        stefanoNormal.isHidden = true
+        stefanoFarting.isHidden = false
+    }
+    
+
     // Handle Vasilly's state transitions
     private func handleVasillyState() {
-        if viewModel.vasillyTurnCount == 0 {
-            viewModel.incrementScoreBy(5) // Increment score while Vasilly is "thinking"
-        } else {
-            if isTouchingScreen {
-                turnVasillyToAngry()
+        if viewModel.vasillyTurnCount < 5 {
+            // Alternate between thinking and looking states
+            let isThinking = viewModel.vasillyTurnCount % 2 == 0
+            if isThinking {
+                // Increment score while Vasilly is "thinking"
+                viewModel.incrementScoreBy(5)
+            }
+
+            // Check if Santo and Stefano are farting and deduct points if necessary
+            if isSantoFarting && isStefanoFarting {
+                viewModel.decrementScoreBy(40)
+                showVasillyAngry()
+            }
+
+            // Increment Vasilly's turn count
+            viewModel.incrementVasillyTurnCount()
+            if !isVasillyAngry {
+                // If Vasilly was not shown angry, make Vasilly turn back to looking
+                showVasillyLooking()
+            }
+
+            // Wait for a random time between 7-15 seconds before Vasilly turns again
+            let randomTime = Double.random(in: 7...15)
+            DispatchQueue.main.asyncAfter(deadline: .now() + randomTime) {
+                self.handleVasillyState() // Turn Vasilly again
             }
         }
     }
-    
-    
-    // Transition Vasilly to "angry" state
-    private func turnVasillyToAngry() {
+
+    // Show Vasilly in the "looking" state
+    private func showVasillyLooking() {
+        vasiliThinking.isHidden = true
+        vasiliLooking.isHidden = false
+        vasiliAngry.isHidden = true
+    }
+
+    // Show Vasilly in the "angry" state
+    private func showVasillyAngry() {
         vasiliThinking.isHidden = true
         vasiliLooking.isHidden = true
         vasiliAngry.isHidden = false
-        let returnToThinking = SKAction.run {
-            self.vasiliThinking.isHidden = false
-            self.vasiliLooking.isHidden = true
-            self.vasiliAngry.isHidden = true
-        }
-        let waitAction = SKAction.wait(forDuration: 3)
-        self.run(SKAction.sequence([waitAction, returnToThinking]))
+        isVasillyAngry = true // Set a flag to track Vasilly's angry state
     }
     
     override func didMove(to view: SKView) {
@@ -223,13 +279,17 @@ class FartingGameScene: SKScene {
         startCountdownTimer()
     }
     
+    private func showLeaderboardsView() {
+        // Implement the logic to show the leaderboards view here
+        // You can transition to a new scene or present a SwiftUI view here
+    }
     
-    // Update method
+    
     override func update(_ currentTime: TimeInterval) {
-        if  !isGameOver {
+        if !isGameOver {
             updateTimerLabel()
-            handleButtonPress(isButtonPressed)
+            handleButtonPress()
+            handleVasillyState()
         }
-        
     }
 }

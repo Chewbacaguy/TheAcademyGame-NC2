@@ -56,6 +56,26 @@ class CigaretteGameScene: SKScene {
         animatedNode.run(repeatAction, withKey: "animationKey")
     }
     
+    
+    func createAnimationForMissing() {
+        for i in 1...8 {
+            let texture = SKTexture(imageNamed: "CigMiss\(i)")
+            animationTextures.append(texture)
+        }
+        
+        animatedNode = SKSpriteNode(texture: animationTextures.first)
+        let scale: CGFloat = 0.27
+        animatedNode.setScale(scale)
+        animatedNode.position = CGPoint(x: size.width / 2, y: size.height / 2)
+        addChild(animatedNode)
+        
+        let animationAction = SKAction.animate(with: animationTextures, timePerFrame: 0.1)
+        repeatAction = SKAction.repeat(animationAction, count: 1)
+        
+        animatedNode.run(repeatAction, withKey: "animationKey")
+    }
+    
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if isGameOver {
             // Restart the game

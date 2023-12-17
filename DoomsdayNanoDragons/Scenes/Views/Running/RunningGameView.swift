@@ -10,27 +10,27 @@ import SpriteKit
 
 
 struct RunningGameView: View {
-     @State private var isAnimationStarted = false
-        @State private var isGameOver = false
-        @State private var isLeaderboardVisible = false
-        @StateObject private var viewModel = RunningGameViewModel()
-        @State private var showGameScene = false // New state to control the game scene visibility
-        
+    @State private var isAnimationStarted = false
+    @State private var isGameOver = false
+    @State private var isLeaderboardVisible = false
+    @StateObject private var viewModel = RunningGameViewModel()
+    @State private var showGameScene = false // New state to control the game scene visibility
+    @State private var isActive: Bool = false
     
     var body: some View {
         ZStack {
             // background
             Image("Background")
-                          .resizable()
-                          .scaledToFill()
-                          .edgesIgnoringSafeArea(.all)
-                      
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
+            
             if showGameScene {
-            // Add the SpriteView for your game scene in the background
+                // Add the SpriteView for your game scene in the background
                 
-         //   SpriteView(scene: RunningGameScene(size: UIScreen.main.bounds.size))
-            //    .edgesIgnoringSafeArea(.all)
-            //    .transition(.opacity)
+                SpriteView(scene: RunningGameScene(size: UIScreen.main.bounds.size))
+                    .edgesIgnoringSafeArea(.all)
+                    .transition(.opacity)
             } else {
                 VStack {
                     Spacer()
@@ -78,12 +78,8 @@ struct RunningGameView: View {
                     
                     HStack {
                         
-                        
-                        Spacer() // This spacer pushes the following items to the center
-                        
                         Button(action: {
-                            // Handle exit button click
-                            // NAVIGATE BACK TO CONTENTVIEW
+                            isActive = true // Set isActive to true when the button is pressed
                         }) {
                             Text("EXIT")
                                 .font(Font.custom("Luckiest Guy", size: 30))
@@ -93,11 +89,17 @@ struct RunningGameView: View {
                                 .cornerRadius(3.0)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 3)
-                                        .stroke(Color.black, lineWidth: 6)
+                                        .stroke(Color.black, lineWidth: 5)
                                 )
-                                .padding(.top, -25)
-                            
+                                .padding(.top, -45)
                         }
+                        .onTapGesture {
+                            isActive = true
+                        }
+                        .background(
+                            NavigationLink("Exit", destination: IntroView())
+                        )
+                        .hidden()
                         
                         Spacer() // This spacer pushes the following item to the end
                         
@@ -105,7 +107,11 @@ struct RunningGameView: View {
                             .font(Font.custom("Luckiest Guy", size: 25))
                             .foregroundColor(.white)
                             .padding(.trailing) // Add some right padding
+                            .padding(.bottom, 10)
+                        
+                        
                     }
+                    
                     
                     
                 }
@@ -122,7 +128,7 @@ struct RunningGameView: View {
 }
 
 
- 
+
 
 struct RunningGameView_Previews: PreviewProvider {
     static var previews: some View {

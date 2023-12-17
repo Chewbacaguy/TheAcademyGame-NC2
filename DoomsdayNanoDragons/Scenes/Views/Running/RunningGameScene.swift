@@ -7,7 +7,7 @@
 import SpriteKit
 import GameplayKit
 
-class RuunningGameScene: SKScene, SKPhysicsContactDelegate {
+class RunningGameScene: SKScene, SKPhysicsContactDelegate {
     
     //nodes
     var gameNode: SKNode!
@@ -67,7 +67,7 @@ class RuunningGameScene: SKScene, SKPhysicsContactDelegate {
             addCollisionToGround()
             
         //background elements
-        let backgroundTexture = SKTexture(imageNamed: "dino.assets/landscape/Background")
+        let backgroundTexture = SKTexture(imageNamed: "Background")
            backgroundNode = SKSpriteNode(texture: backgroundTexture)
            backgroundNode.zPosition = background // Set backgroundNode's z-position to background
            backgroundNode.size = CGSize(width: self.size.width, height: self.size.height) // Set the size of the background to match the scene size
@@ -91,7 +91,7 @@ class RuunningGameScene: SKScene, SKPhysicsContactDelegate {
         
         //score
         score = 0
-        scoreNode = SKLabelNode(fontNamed: "Arial")
+        scoreNode = SKLabelNode(fontNamed: "Luckiest Guy")
         scoreNode.fontSize = 30
         scoreNode.zPosition = foreground
         scoreNode.text = "Score: 0"
@@ -99,8 +99,8 @@ class RuunningGameScene: SKScene, SKPhysicsContactDelegate {
         scoreNode.position = CGPoint(x: 150, y: 100)
         
         //reset instructions
-        resetInstructions = SKLabelNode(fontNamed: "Arial")
-        resetInstructions.fontSize = 50
+        resetInstructions = SKLabelNode(fontNamed: "Luckiest Guy")
+        resetInstructions.fontSize = 30
         resetInstructions.text = "Tap to Restart"
         resetInstructions.fontColor = SKColor.white
         resetInstructions.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
@@ -181,8 +181,8 @@ class RuunningGameScene: SKScene, SKPhysicsContactDelegate {
         
         resetInstructions.fontColor = SKColor.white
         
-        let dinoTexture1 = SKTexture(imageNamed: "dino.assets/dinosaurs/dinoRight")
-        let dinoTexture2 = SKTexture(imageNamed: "dino.assets/dinosaurs/dinoLeft")
+        let dinoTexture1 = SKTexture(imageNamed: "dinoRight")
+        let dinoTexture2 = SKTexture(imageNamed: "dinoLeft")
         dinoTexture1.filteringMode = .nearest
         dinoTexture2.filteringMode = .nearest
         
@@ -197,7 +197,7 @@ class RuunningGameScene: SKScene, SKPhysicsContactDelegate {
         
         resetInstructions.fontColor = SKColor.gray
         
-        let deadDinoTexture = SKTexture(imageNamed: "dino.assets/dinosaurs/dinoDead")
+        let deadDinoTexture = SKTexture(imageNamed: "dinoDead")
         deadDinoTexture.filteringMode = .nearest
         
         dinoSprite.removeAllActions()
@@ -208,7 +208,7 @@ class RuunningGameScene: SKScene, SKPhysicsContactDelegate {
             let screenWidth = self.frame.size.width
             
             // ground texture
-            let groundTexture = SKTexture(imageNamed: " dino.assets/landscape/Background")
+            let groundTexture = SKTexture(imageNamed: "ground")
             groundTexture.filteringMode = .nearest
             
             groundHeight = groundTexture.size().height
@@ -247,11 +247,11 @@ class RuunningGameScene: SKScene, SKPhysicsContactDelegate {
    
     func createDinosaur() {
         let screenWidth = self.frame.size.width
-        let dinoScale = 4.0 as CGFloat
+        let dinoScale = 1.8 as CGFloat
         
         //textures
-        let dinoTexture1 = SKTexture(imageNamed: "dino.assets/dinosaurs/dinoRight")
-        let dinoTexture2 = SKTexture(imageNamed: "dino.assets/dinosaurs/dinoLeft")
+        let dinoTexture1 = SKTexture(imageNamed: "dinoRight")
+        let dinoTexture2 = SKTexture(imageNamed: "dinoLeft")
         dinoTexture1.filteringMode = .nearest
         dinoTexture2.filteringMode = .nearest
         
@@ -273,16 +273,16 @@ class RuunningGameScene: SKScene, SKPhysicsContactDelegate {
         dinoSprite.physicsBody?.collisionBitMask = groundCategory
         
         dinoYPosition = getGroundHeight() + dinoTexture1.size().height * dinoScale
-        dinoSprite.position = CGPoint(x: screenWidth * 0.15, y: dinoYPosition!)
+        dinoSprite.position = CGPoint(x: screenWidth * 0.2, y: 430)//dinoYPosition!)
         dinoSprite.run(SKAction.repeatForever(runningAnimation))
     }
     
     func spawnCactus() {
         let cactusTextures = ["cactus1", "cactus2", "cactus3", "cactus4"]
-        let cactusScale = 3.0 as CGFloat
+        let cactusScale = 0.95 as CGFloat
         
         //texture
-        let cactusTexture = SKTexture(imageNamed: "dino.assets/cacti/" + cactusTextures.randomElement()!)
+        let cactusTexture = SKTexture(imageNamed: cactusTextures.randomElement()!)
         cactusTexture.filteringMode = .nearest
         
         //sprite

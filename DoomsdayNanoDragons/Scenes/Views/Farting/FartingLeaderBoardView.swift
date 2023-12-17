@@ -9,7 +9,8 @@ import SwiftUI
 import SpriteKit
 
 struct FartingLeaderboardView: View {
-    var topCatches: [Int] // Replace this with your actual leaderboard data
+    var fastestFarters = [12.0, 4.0, 1.0]
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         VStack {
@@ -34,9 +35,9 @@ struct FartingLeaderboardView: View {
                             .padding(.top, -3)
                         
                         // NEEDS LOGIC FOR BEST TIMES, not top catches
-                        ForEach(0..<topCatches.count, id: \.self) { index in
+                        ForEach(0..<fastestFarters.count, id: \.self) { index in
                             HStack {
-                                Text("\(topCatches[index]) ")
+                                Text("\(fastestFarters[index]) ")
                                     .font(Font.custom("Luckiest Guy", size: 25))
                                     .foregroundColor(.black)
                                 
@@ -51,7 +52,7 @@ struct FartingLeaderboardView: View {
             
             Button(action: {
                 // Handle exit button click
-                // NAVIGATE BACK TO CONTENTVIEW
+                presentationMode.wrappedValue.dismiss() // Dismiss the current view
             }) {
                 Text("EXIT")
                     .font(Font.custom("Luckiest Guy", size: 30)) // Adjust the font size
@@ -72,6 +73,6 @@ struct FartingLeaderboardView: View {
 
 struct FartingLeaderboardView_Previews: PreviewProvider {
     static var previews: some View {
-        FartingLeaderboardView(topCatches: [4,5,6])
+        FartingLeaderboardView(fastestFarters: [12.0, 4.0, 1.0])
     }
 }

@@ -16,10 +16,16 @@ class FartingGameViewModel: ObservableObject {
     @Published var lastUpdateTime: TimeInterval = 0
     @Published var timeRemaining = 60
 
+    
     var vasiliThinking = true
     var vasiliLooking = false
     var vasiliAngry = false
 
+    
+    func incrementVasillyTurnCount() {
+        vasillyTurnCount += 1
+    }
+    
     // Function to increment the score
     func incrementScore() {
         score += 1
