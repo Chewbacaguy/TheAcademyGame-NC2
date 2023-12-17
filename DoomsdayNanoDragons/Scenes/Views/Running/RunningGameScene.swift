@@ -8,6 +8,7 @@ import SpriteKit
 import GameplayKit
 
 class RunningGameScene: SKScene, SKPhysicsContactDelegate {
+    var gameRunning = false // A flag to track the game stat
     
     //nodes
     var gameNode: SKNode!
@@ -39,7 +40,7 @@ class RunningGameScene: SKScene, SKPhysicsContactDelegate {
     var groundSpeed = 500 as CGFloat
     
     //consts
-    let dinoHopForce = 700 as Int
+    let dinoHopForce = 600 as Int
     let cloudSpeed = 50 as CGFloat
     let moonSpeed = 10 as CGFloat
     
@@ -51,6 +52,9 @@ class RunningGameScene: SKScene, SKPhysicsContactDelegate {
     let dinoCategory = 1 << 1 as UInt32
     let cactusCategory = 1 << 2 as UInt32
     let birdCategory = 1 << 3 as UInt32
+    
+    
+   
     
     override func didMove(to view: SKView) {
         
@@ -81,29 +85,45 @@ class RunningGameScene: SKScene, SKPhysicsContactDelegate {
         dinosaurNode.zPosition = foreground
         createDinosaur()
         
+        
+        let minY = 0
+               let maxY = 300
+               let minX = 0
+               let maxX = 300
+               
+        let yRange = SKRange(lowerLimit: CGFloat(minY), upperLimit: CGFloat(maxY))
+        let xRange = SKRange(lowerLimit: CGFloat(minX), upperLimit: CGFloat(maxX))
+               
+               let dinoConstraints = SKConstraint.positionX(xRange, y: yRange)
+               dinoSprite.constraints = [dinoConstraints]
+               
         //cacti
         cactusNode = SKNode()
         cactusNode.zPosition = foreground
         
-        //birds
-        birdNode = SKNode()
-        birdNode.zPosition = foreground
+       
         
         //score
         score = 0
         scoreNode = SKLabelNode(fontNamed: "Luckiest Guy")
-        scoreNode.fontSize = 30
-        scoreNode.zPosition = foreground
+        scoreNode.fontSize = 45
+        scoreNode.zPosition = foreground + 1
         scoreNode.text = "Score: 0"
-        scoreNode.fontColor = SKColor.gray
-        scoreNode.position = CGPoint(x: 150, y: 100)
+        scoreNode.fontColor = SKColor.white
+        scoreNode.horizontalAlignmentMode = .left // Align the text to the left
+        scoreNode.verticalAlignmentMode = .bottom // Align the text to the bottom
+        scoreNode.position = CGPoint(x: 2000, y: 250) // Adjust the position here
+           
+     
         
         //reset instructions
         resetInstructions = SKLabelNode(fontNamed: "Luckiest Guy")
-        resetInstructions.fontSize = 30
+        resetInstructions.fontSize = 45
         resetInstructions.text = "Tap to Restart"
         resetInstructions.fontColor = SKColor.white
         resetInstructions.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+        
+        resetInstructions.isHidden = true
         
         //parent game node
         gameNode = SKNode()
@@ -140,6 +160,9 @@ class RunningGameScene: SKScene, SKPhysicsContactDelegate {
             score += 1
             scoreNode.text = "Score: \(score/5)"
             
+            scoreNode.position = CGPoint(x: 20, y: 20) // Adjust the position as needed
+            scoreNode.zPosition = foreground + 1
+            
             if(currentTime - timeSinceLastSpawn > spawnRate){
                 timeSinceLastSpawn = currentTime
                 spawnRate = Double.random(in: 1.0 ..< 3.5)
@@ -152,6 +175,13 @@ class RunningGameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
+    
+    
+    func toggleResetInstructions(show: Bool) {
+            resetInstructions.isHidden = !show
+        }
+
+    
     
     func didBegin(_ contact: SKPhysicsContact) {
         if(hitCactus(contact) || hitBird(contact)){
@@ -177,7 +207,7 @@ class RunningGameScene: SKScene, SKPhysicsContactDelegate {
         score = 0
         
         cactusNode.removeAllChildren()
-        birdNode.removeAllChildren()
+   
         
         resetInstructions.fontColor = SKColor.white
         
@@ -190,18 +220,23 @@ class RunningGameScene: SKScene, SKPhysicsContactDelegate {
         
         dinoSprite.position = CGPoint(x: self.frame.size.width * 0.15, y: dinoYPosition!)
         dinoSprite.run(SKAction.repeatForever(runningAnimation))
+        toggleResetInstructions(show: false)
+                gameRunning = true
     }
     
     func gameOver() {
         gameNode.speed = 0.0
         
-        resetInstructions.fontColor = SKColor.gray
+        resetInstructions.fontColor = SKColor.white
         
         let deadDinoTexture = SKTexture(imageNamed: "dinoDead")
         deadDinoTexture.filteringMode = .nearest
         
         dinoSprite.removeAllActions()
         dinoSprite.texture = deadDinoTexture
+        
+        toggleResetInstructions(show: true)
+                gameRunning = false
     }
     
     func createAndMoveGround() {
