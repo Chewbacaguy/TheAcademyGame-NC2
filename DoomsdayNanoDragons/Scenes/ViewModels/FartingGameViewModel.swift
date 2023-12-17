@@ -48,7 +48,6 @@ class FartingGameViewModel: ObservableObject {
     func resetGame() {
         score = 0
         isGameRunning = false
-        currentFrame = 0
         vasillyTurnCount = 0
         vasiliThinking = true
         vasiliLooking = false

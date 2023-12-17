@@ -42,6 +42,9 @@ class CigaretteGameScene: SKScene {
         setupRestartButton()
     }
     
+    func removeRestartButton() {
+        restartButton.removeFromSuperview()
+    }
     
     func createAnimation() {
         for i in 1...27 {
@@ -84,9 +87,7 @@ class CigaretteGameScene: SKScene {
         restartButton.frame = CGRect(x: centerX, y: UIScreen.main.bounds.height - buttonHeight - padding, width: buttonWidth, height: buttonHeight)
         restartButton.addTarget(self, action: #selector(restartGame), for: .touchUpInside)
         
-        if let window = view?.window {
-            window.addSubview(restartButton)
-        }
+        self.view?.addSubview(restartButton)
     }
     
     

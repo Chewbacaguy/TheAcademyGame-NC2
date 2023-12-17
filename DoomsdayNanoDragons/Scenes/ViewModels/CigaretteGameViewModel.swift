@@ -14,8 +14,7 @@ class CigaretteGameViewModel: ObservableObject {
     @Published var isGameOver = false
     @Published var currentFrame = 0
     @Published var topCatches: [Int] = [] // Define topCatches as @Published property
-
-
+    
     func incrementScore() {
         score += 1
     }
@@ -31,3 +30,16 @@ class CigaretteGameViewModel: ObservableObject {
            score += value
        }
 }
+
+//
+//class CigaretteGameViewCoordinator: NSObject, ObservableObject {
+//    weak var scene: CigaretteGameScene?
+//    
+//    init(scene: CigaretteGameScene) {
+//        self.scene = scene
+//    }
+//    
+//    func removeRestartButton() {
+//        scene?.removeRestartButton()
+//    }
+//}

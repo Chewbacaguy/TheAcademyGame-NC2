@@ -38,57 +38,25 @@ struct FartingGameView: View {
                     .frame(width: 140, alignment: .trailing)
                     .position(x: 300, y: 46)
                 
-                VStack {
-                    Text("\(viewModel.score) pts")
-                        .font(Font.custom("Luckiest Guy", size: 20))
-                        .padding(11)
-                        .padding(.leading, 17)
-                        .background(
-                            RoundedRectangle(cornerRadius: 17)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 17)
-                                        .fill(Color.white)
-                                        .stroke(Color.black, lineWidth: 2)
-                                        .frame(width: 140)
-                                )
-                        )
-                        .position(x: 34, y: -200)
-                    
-                }
+//                VStack {
+//                    Text("\(viewModel.score) pts")
+//                        .font(Font.custom("Luckiest Guy", size: 20))
+//                        .padding(11)
+//                        .padding(.leading, 17)
+//                        .background(
+//                            RoundedRectangle(cornerRadius: 17)
+//                                .overlay(
+//                                    RoundedRectangle(cornerRadius: 17)
+//                                        .fill(Color.white)
+//                                        .stroke(Color.black, lineWidth: 2)
+//                                        .frame(width: 140)
+//                                )
+//                        )
+//                        .position(x: 34, y: -200)
+//                    
+//                }
                 
                 Spacer()
-                
-//                Button(action: {
-//                    if isGameOver {
-//                        // Restart the game
-//                        isGameOver = false
-//                        viewModel.resetGame()
-//                    } else {
-//                        // Start the animation and game timer
-//                        isAnimationStarted = true
-//                        viewModel.startGame()
-//                        
-//                    }
-//                }) {
-//                    Text(isGameOver ? "TAP 2 Fart!" : (isAnimationStarted ? "WATCH OUT!" : "TAP 2 FART!"))
-//                        .font(Font.custom("Luckiest Guy", size: 30))
-//                        .frame(width: 280, height: 72)
-//                        .padding(10)
-//                }
-//                .buttonStyle(IntroButtonStyle())
-//                .gesture(
-//                    LongPressGesture(minimumDuration: 0.1)
-//                        .onChanged { _ in
-//                            self.isButtonPressed = true
-//                            // Perform actions while the button is pressed
-//                            isButtonPressed.toggle()
-//                        }
-//                        .onEnded { _ in
-//                            self.isButtonPressed = false
-//                            // Perform actions when the button is released
-//                        }
-//                )
-                
                 
             }
         }

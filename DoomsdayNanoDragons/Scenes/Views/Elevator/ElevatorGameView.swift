@@ -81,7 +81,7 @@ struct ElevatorGameView: View {
                             startTimer()
                         }
 
-                        if tapCount == 20 {
+                        if tapCount == 35 {
                             winningTime = remainingTime
                             isLeaderboardVisible = true
                         }
