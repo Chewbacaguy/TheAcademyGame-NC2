@@ -14,34 +14,34 @@
 
 import SpriteKit
 import SwiftUI
+import AVFoundation
 
 class ElevatorGameScene: SKScene {
     @ObservedObject var viewModel: ElevatorGameViewModel
     @Binding var isAnimationStarted: Bool
     @Binding var isGameOver: Bool
-    
+    var audioPlayer: AVAudioPlayer?
+    @Binding var isButtonPressed: Bool
     var animationTextures: [SKTexture] = []
     var animatedNode: SKSpriteNode!
     var repeatAction: SKAction!
     var frameNumber = 0 // Track the frame number
     var isTouchingScreen = false
-    var isFrame21Tapped = false
     var timeRemaining = 60 // Total time for the game
-    var vasillyTurnCount = 0 // Count for Vasilly turning
+   
     
     // Declare sprite nodes for your assets
-    var vasiliNormal: SKSpriteNode!
-    var vasiliLooking: SKSpriteNode!
-    var santoNormal: SKSpriteNode!
-    var santoFarting: SKSpriteNode!
-    var stefanoNormal: SKSpriteNode!
-    var stefanoFarting: SKSpriteNode!
+    var nagaHappy: SKSpriteNode!
+    var nagaRight: SKSpriteNode!
+    var nagaLeft: SKSpriteNode!
+   
     
     
-    init(size: CGSize, viewModel: ElevatorGameViewModel, isAnimationStarted: Binding<Bool>, isGameOver: Binding<Bool>) {
+    init(size: CGSize, viewModel: ElevatorGameViewModel, isButtonPressed:Binding<Bool>, isAnimationStarted: Binding<Bool>, isGameOver: Binding<Bool>) {
         self.viewModel = viewModel
         self._isAnimationStarted = isAnimationStarted
         self._isGameOver = isGameOver
+        self._isButtonPressed = isButtonPressed
         super.init(size: size)
         
         // Set the background image
@@ -52,7 +52,29 @@ class ElevatorGameScene: SKScene {
         addChild(backgroundImage)
         
         
-     
+        nagaHappy = SKSpriteNode(imageNamed: "NagHappy")
+        nagaRight = SKSpriteNode(imageNamed: "NagMad")
+        nagaLeft = SKSpriteNode(imageNamed: "NagMad1")
+        nagaRight.position = CGPoint(x: 200, y: 350)
+        nagaLeft.position = CGPoint(x: 200, y: 350)
+        nagaHappy.position = CGPoint(x: 200, y: 350)
+        
+        let nagaScale = 0.5 as CGFloat
+        nagaHappy.setScale(nagaScale)
+        nagaRight.setScale(nagaScale)
+        nagaLeft.setScale(nagaScale)
+        
+        
+        nagaHappy.isHidden = false
+        nagaRight.isHidden = true
+        nagaLeft.isHidden = true
+        
+        
+        addChild(nagaLeft)
+        addChild(nagaRight)
+        addChild(nagaHappy)
+        
+        
         
         // Load animation textures
         for i in 1...22 {
@@ -61,60 +83,71 @@ class ElevatorGameScene: SKScene {
         }
     }
     
+    private var isNagaRightVisible = false
+    var toggleTimer: Timer?
+    var timeSinceLastToggle: TimeInterval = 0
+    let toggleInterval: TimeInterval = 1.0
+    var lastUpdateTime: TimeInterval = 0
+    
+    func toggleNaga() {
+        isNagaRightVisible = !isNagaRightVisible
+
+        nagaRight.isHidden = !isNagaRightVisible
+        nagaLeft.isHidden = isNagaRightVisible
+    }
+
+    func stopTogglingNaga() {
+        toggleTimer?.invalidate()
+        toggleTimer = nil
+    }
+    
+    func startTogglingNaga() {
+        toggleTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+            self?.toggleNaga()
+        }
+    }
+    
+    override func didMove(to view: SKView) {
+        lastUpdateTime = 0
+        // Other setup code...
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func update(_ currentTime: TimeInterval) {
-        if isAnimationStarted && !isGameOver {
-            // Update game timer
-            if timeRemaining > 0 {
-                timeRemaining -= 1
-                
-                // Check for Vasilly turning
-                if timeRemaining < 60 && vasillyTurnCount < 5 {
-                    // Implement random chance for Vasilly turning
-                    let random = Int.random(in: 0..<100)
-                    if random < 5 { // Adjust this value for your desired chance (e.g., 5%)
-                        vasillyTurnCount += 1
-                        // Handle Vasilly turning here
-                        
-                        // Change Vasilly's state to "looking"
-                    }
-                }
-                
-                // Handle scoring based on actions and states
-                if isTouchingScreen {
-                    if isFrame21Tapped {
-                        // You tapped on frame 21
-                        viewModel.incrementScore()
-                        animatedNode.removeAction(forKey: "animationKey")
-                        // Handle scoring based on Vasilly's state here
-                        if vasillyTurnCount == 0 {
-                            viewModel.incrementScoreBy(5)
-                        } else {
-                            viewModel.decrementScoreBy(40)
-                        }
-                    } else {
-                        // You didn't tap on frame 21
-                        viewModel.isGameRunning = false
-                        isGameOver = true
-                        stopAnimation()
-                    }
-                    isTouchingScreen = false
-                } else {
-                    // Not touching the screen, decrement score or do nothing
-                    if vasillyTurnCount == 0 {
-                        viewModel.decrementScoreBy(1)
-                    }
-                }
-            } else {
-                // Game over when the timer reaches 0
-                viewModel.isGameRunning = false
-                isGameOver = true
-                stopAnimation()
-            }
+    func playDing(){
+        guard let url = Bundle.main.url(forResource: "elevator", withExtension: "mp3") else { return }
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            audioPlayer?.play()
+        } catch {
+            print("Could not load grunt sound file")
         }
+    }
+    
+    
+    override func update(_ currentTime: TimeInterval) {
+        // Calculate time elapsed since last frame
+        
+        let deltaTime = currentTime - lastUpdateTime
+        lastUpdateTime = currentTime
+
+        // Increment the time since the last toggle
+        timeSinceLastToggle += deltaTime
+
+        // Check if it's time to toggle
+        if timeSinceLastToggle >= toggleInterval {
+            nagaHappy.isHidden = true
+            toggleNaga()
+            timeSinceLastToggle = 0
+        }
+        
+        if isGameOver{
+            playDing()
+        }
+
+        // Other update logic...
     }
     
     func stopAnimation() {

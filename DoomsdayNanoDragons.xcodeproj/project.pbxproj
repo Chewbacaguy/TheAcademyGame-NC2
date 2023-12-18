@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA26D5602B309EEB001FD7DB /* elevator.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA26D55F2B309EEB001FD7DB /* elevator.mp3 */; };
 		AA7C5BBC2B2FBF9400EE0F44 /* whoosh.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA7C5BBB2B2FBF9300EE0F44 /* whoosh.mp3 */; };
 		AA7C5BBE2B2FC23300EE0F44 /* fart4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA7C5BBD2B2FC23200EE0F44 /* fart4.mp3 */; };
 		AA7C5BC02B2FC23800EE0F44 /* fart3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA7C5BBF2B2FC23800EE0F44 /* fart3.mp3 */; };
@@ -54,6 +55,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA26D55F2B309EEB001FD7DB /* elevator.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = elevator.mp3; sourceTree = "<group>"; };
 		AA7C5BBB2B2FBF9300EE0F44 /* whoosh.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = whoosh.mp3; sourceTree = "<group>"; };
 		AA7C5BBD2B2FC23200EE0F44 /* fart4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fart4.mp3; sourceTree = "<group>"; };
 		AA7C5BBF2B2FC23800EE0F44 /* fart3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fart3.mp3; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 		AA7C5BBA2B2FBF8400EE0F44 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				AA26D55F2B309EEB001FD7DB /* elevator.mp3 */,
 				AA7C5BDD2B2FD06E00EE0F44 /* filiDead.wav */,
 				AA7C5BDB2B2FCCA000EE0F44 /* SantiScream2.wav */,
 				AA7C5BD92B2FCC9A00EE0F44 /* SantiScream1.wav.wav */,
@@ -322,6 +325,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA26D5602B309EEB001FD7DB /* elevator.mp3 in Resources */,
 				AA7C5BBC2B2FBF9400EE0F44 /* whoosh.mp3 in Resources */,
 				AA7C5BDA2B2FCC9A00EE0F44 /* SantiScream1.wav.wav in Resources */,
 				AA7C5BC82B2FC46F00EE0F44 /* grunt.mp3 in Resources */,

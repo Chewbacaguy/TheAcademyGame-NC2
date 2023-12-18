@@ -17,6 +17,7 @@ struct FartingGameView: View {
     @State private var isStefanoFarting = false
     @State private var isLeaderboardVisible = false
     @State private var startTime = true
+    
     @Binding var time: TimeInterval
     @Binding var currentTime: TimeInterval
     @ObservedObject private var viewModel = FartingGameViewModel()
@@ -38,23 +39,7 @@ struct FartingGameView: View {
                     .frame(width: 140, alignment: .trailing)
                     .position(x: 300, y: 46)
                 
-//                VStack {
-//                    Text("\(viewModel.score) pts")
-//                        .font(Font.custom("Luckiest Guy", size: 20))
-//                        .padding(11)
-//                        .padding(.leading, 17)
-//                        .background(
-//                            RoundedRectangle(cornerRadius: 17)
-//                                .overlay(
-//                                    RoundedRectangle(cornerRadius: 17)
-//                                        .fill(Color.white)
-//                                        .stroke(Color.black, lineWidth: 2)
-//                                        .frame(width: 140)
-//                                )
-//                        )
-//                        .position(x: 34, y: -200)
-//                    
-//                }
+
                 
                 Spacer()
                 

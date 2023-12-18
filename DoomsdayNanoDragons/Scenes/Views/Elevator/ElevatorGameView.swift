@@ -14,7 +14,7 @@ struct ElevatorGameView: View {
     @State private var isGameOver = false
     @State private var isLeaderboardVisible = false
     @StateObject private var viewModel = ElevatorGameViewModel()
-
+    @State private var isButtonPressed = false
     @State private var backgroundImage: Image?
     @State private var timer: Timer?
     @State private var remainingTime = 15
@@ -29,7 +29,7 @@ struct ElevatorGameView: View {
                     .scaledToFill()
                     .edgesIgnoringSafeArea(.all)
             } else {
-                SpriteView(scene: ElevatorGameScene(size: UIScreen.main.bounds.size, viewModel: viewModel, isAnimationStarted: $viewModel.isGameRunning, isGameOver: $viewModel.isGameOver))
+                SpriteView(scene: ElevatorGameScene(size: UIScreen.main.bounds.size, viewModel: viewModel, isButtonPressed: $isButtonPressed, isAnimationStarted: $viewModel.isGameRunning, isGameOver: $viewModel.isGameOver))
                     .edgesIgnoringSafeArea(.all)
             }
 
@@ -62,10 +62,13 @@ struct ElevatorGameView: View {
                 Spacer()
 
                 Button(action: {
+                    
                     if isGameOver {
+                       
                         withAnimation {
                             viewModel.resetGame()
                             isAnimationStarted = false
+                            
                             isGameOver = false
                             backgroundImage = nil
                             remainingTime = 15
@@ -75,9 +78,10 @@ struct ElevatorGameView: View {
                         }
                     } else {
                         tapCount += 1
-
+                        
                         if !isAnimationStarted {
                             isAnimationStarted = true
+                            isButtonPressed = true
                             startTimer()
                         }
 
