@@ -7,6 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA7C5BBC2B2FBF9400EE0F44 /* whoosh.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA7C5BBB2B2FBF9300EE0F44 /* whoosh.mp3 */; };
+		AA7C5BBE2B2FC23300EE0F44 /* fart4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA7C5BBD2B2FC23200EE0F44 /* fart4.mp3 */; };
+		AA7C5BC02B2FC23800EE0F44 /* fart3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA7C5BBF2B2FC23800EE0F44 /* fart3.mp3 */; };
+		AA7C5BC22B2FC23D00EE0F44 /* laugh.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA7C5BC12B2FC23D00EE0F44 /* laugh.mp3 */; };
+		AA7C5BC42B2FC24500EE0F44 /* fart2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA7C5BC32B2FC24500EE0F44 /* fart2.mp3 */; };
+		AA7C5BC62B2FC24D00EE0F44 /* fart1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA7C5BC52B2FC24D00EE0F44 /* fart1.mp3 */; };
+		AA7C5BC82B2FC46F00EE0F44 /* grunt.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA7C5BC72B2FC46F00EE0F44 /* grunt.mp3 */; };
+		AA7C5BCA2B2FC4F100EE0F44 /* sniff.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA7C5BC92B2FC4F100EE0F44 /* sniff.mp3 */; };
+		AA7C5BCC2B2FC7FC00EE0F44 /* laugh2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA7C5BCB2B2FC7FC00EE0F44 /* laugh2.mp3 */; };
+		AA7C5BCE2B2FC80200EE0F44 /* lol1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA7C5BCD2B2FC80200EE0F44 /* lol1.mp3 */; };
+		AA7C5BD02B2FC80900EE0F44 /* lol2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA7C5BCF2B2FC80900EE0F44 /* lol2.mp3 */; };
+		AA7C5BD22B2FC80E00EE0F44 /* lol3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA7C5BD12B2FC80E00EE0F44 /* lol3.mp3 */; };
+		AA7C5BD42B2FC81400EE0F44 /* laugh3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA7C5BD32B2FC81400EE0F44 /* laugh3.mp3 */; };
+		AA7C5BD62B2FCC8800EE0F44 /* die.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA7C5BD52B2FCC8800EE0F44 /* die.wav */; };
+		AA7C5BD82B2FCC8E00EE0F44 /* jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA7C5BD72B2FCC8E00EE0F44 /* jump.wav */; };
+		AA7C5BDA2B2FCC9A00EE0F44 /* SantiScream1.wav.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA7C5BD92B2FCC9A00EE0F44 /* SantiScream1.wav.wav */; };
+		AA7C5BDC2B2FCCA000EE0F44 /* SantiScream2.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA7C5BDB2B2FCCA000EE0F44 /* SantiScream2.wav */; };
+		AA7C5BDE2B2FD06E00EE0F44 /* filiDead.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA7C5BDD2B2FD06E00EE0F44 /* filiDead.wav */; };
 		AAAD737F2B28AF1B002038AF /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAD737E2B28AF1B002038AF /* IntroView.swift */; };
 		AAAD73822B28C049002038AF /* LuckiestGuy-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAAD73812B28C049002038AF /* LuckiestGuy-Regular.ttf */; };
 		AAAD738B2B28C590002038AF /* CigaretteGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAD738A2B28C590002038AF /* CigaretteGameScene.swift */; };
@@ -36,6 +54,24 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA7C5BBB2B2FBF9300EE0F44 /* whoosh.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = whoosh.mp3; sourceTree = "<group>"; };
+		AA7C5BBD2B2FC23200EE0F44 /* fart4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fart4.mp3; sourceTree = "<group>"; };
+		AA7C5BBF2B2FC23800EE0F44 /* fart3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fart3.mp3; sourceTree = "<group>"; };
+		AA7C5BC12B2FC23D00EE0F44 /* laugh.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = laugh.mp3; sourceTree = "<group>"; };
+		AA7C5BC32B2FC24500EE0F44 /* fart2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fart2.mp3; sourceTree = "<group>"; };
+		AA7C5BC52B2FC24D00EE0F44 /* fart1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fart1.mp3; sourceTree = "<group>"; };
+		AA7C5BC72B2FC46F00EE0F44 /* grunt.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = grunt.mp3; sourceTree = "<group>"; };
+		AA7C5BC92B2FC4F100EE0F44 /* sniff.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sniff.mp3; sourceTree = "<group>"; };
+		AA7C5BCB2B2FC7FC00EE0F44 /* laugh2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = laugh2.mp3; sourceTree = "<group>"; };
+		AA7C5BCD2B2FC80200EE0F44 /* lol1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lol1.mp3; sourceTree = "<group>"; };
+		AA7C5BCF2B2FC80900EE0F44 /* lol2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lol2.mp3; sourceTree = "<group>"; };
+		AA7C5BD12B2FC80E00EE0F44 /* lol3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lol3.mp3; sourceTree = "<group>"; };
+		AA7C5BD32B2FC81400EE0F44 /* laugh3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = laugh3.mp3; sourceTree = "<group>"; };
+		AA7C5BD52B2FCC8800EE0F44 /* die.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = die.wav; path = DoomsdayNanoDragons/Assets.xcassets/dino/sounds/die.dataset/die.wav; sourceTree = SOURCE_ROOT; };
+		AA7C5BD72B2FCC8E00EE0F44 /* jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = jump.wav; path = DoomsdayNanoDragons/Assets.xcassets/dino/sounds/jump.dataset/jump.wav; sourceTree = SOURCE_ROOT; };
+		AA7C5BD92B2FCC9A00EE0F44 /* SantiScream1.wav.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = SantiScream1.wav.wav; path = DoomsdayNanoDragons/Assets.xcassets/dino/sounds/SantiScream1.dataset/SantiScream1.wav.wav; sourceTree = SOURCE_ROOT; };
+		AA7C5BDB2B2FCCA000EE0F44 /* SantiScream2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = SantiScream2.wav; path = DoomsdayNanoDragons/Assets.xcassets/dino/sounds/SantiScream2.dataset/SantiScream2.wav; sourceTree = SOURCE_ROOT; };
+		AA7C5BDD2B2FD06E00EE0F44 /* filiDead.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = filiDead.wav; sourceTree = "<group>"; };
 		AAAD737E2B28AF1B002038AF /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
 		AAAD73812B28C049002038AF /* LuckiestGuy-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LuckiestGuy-Regular.ttf"; sourceTree = "<group>"; };
 		AAAD73882B28C3E1002038AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -55,7 +91,7 @@
 		AAB60CC72B2A0770007AE64D /* ElevatorLeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevatorLeaderboardView.swift; sourceTree = "<group>"; };
 		AAB60CC92B2A0C15007AE64D /* RunningGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningGameScene.swift; sourceTree = "<group>"; };
 		AAB60CCB2B2A0C76007AE64D /* RunningGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningGameViewModel.swift; sourceTree = "<group>"; };
-		AAFCB82A2B1F5F640064A4D3 /* DoomsdayNanoDragons.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoomsdayNanoDragons.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAFCB82A2B1F5F640064A4D3 /* The Academy Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Academy Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAFCB82D2B1F5F640064A4D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAFCB82F2B1F5F650064A4D3 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		AAFCB8312B1F5F650064A4D3 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -77,6 +113,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA7C5BBA2B2FBF8400EE0F44 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				AA7C5BDD2B2FD06E00EE0F44 /* filiDead.wav */,
+				AA7C5BDB2B2FCCA000EE0F44 /* SantiScream2.wav */,
+				AA7C5BD92B2FCC9A00EE0F44 /* SantiScream1.wav.wav */,
+				AA7C5BD72B2FCC8E00EE0F44 /* jump.wav */,
+				AA7C5BD52B2FCC8800EE0F44 /* die.wav */,
+				AA7C5BC52B2FC24D00EE0F44 /* fart1.mp3 */,
+				AA7C5BC32B2FC24500EE0F44 /* fart2.mp3 */,
+				AA7C5BBF2B2FC23800EE0F44 /* fart3.mp3 */,
+				AA7C5BBD2B2FC23200EE0F44 /* fart4.mp3 */,
+				AA7C5BC72B2FC46F00EE0F44 /* grunt.mp3 */,
+				AA7C5BC12B2FC23D00EE0F44 /* laugh.mp3 */,
+				AA7C5BCB2B2FC7FC00EE0F44 /* laugh2.mp3 */,
+				AA7C5BD32B2FC81400EE0F44 /* laugh3.mp3 */,
+				AA7C5BCD2B2FC80200EE0F44 /* lol1.mp3 */,
+				AA7C5BCF2B2FC80900EE0F44 /* lol2.mp3 */,
+				AA7C5BD12B2FC80E00EE0F44 /* lol3.mp3 */,
+				AA7C5BC92B2FC4F100EE0F44 /* sniff.mp3 */,
+				AA7C5BBB2B2FBF9300EE0F44 /* whoosh.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		AAAD73792B28AEA8002038AF /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,7 +242,7 @@
 		AAFCB82B2B1F5F640064A4D3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AAFCB82A2B1F5F640064A4D3 /* DoomsdayNanoDragons.app */,
+				AAFCB82A2B1F5F640064A4D3 /* The Academy Game.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -189,6 +250,7 @@
 		AAFCB82C2B1F5F640064A4D3 /* DoomsdayNanoDragons */ = {
 			isa = PBXGroup;
 			children = (
+				AA7C5BBA2B2FBF8400EE0F44 /* Sounds */,
 				AAAD73882B28C3E1002038AF /* Info.plist */,
 				AAAD73802B28C038002038AF /* fonts */,
 				AAAD73792B28AEA8002038AF /* Scenes */,
@@ -202,9 +264,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AAFCB8292B1F5F640064A4D3 /* DoomsdayNanoDragons */ = {
+		AAFCB8292B1F5F640064A4D3 /* The Academy Game */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AAFCB8412B1F5F660064A4D3 /* Build configuration list for PBXNativeTarget "DoomsdayNanoDragons" */;
+			buildConfigurationList = AAFCB8412B1F5F660064A4D3 /* Build configuration list for PBXNativeTarget "The Academy Game" */;
 			buildPhases = (
 				AAFCB8262B1F5F640064A4D3 /* Sources */,
 				AAFCB8272B1F5F640064A4D3 /* Frameworks */,
@@ -214,9 +276,9 @@
 			);
 			dependencies = (
 			);
-			name = DoomsdayNanoDragons;
+			name = "The Academy Game";
 			productName = DoomsdayNanoDragons;
-			productReference = AAFCB82A2B1F5F640064A4D3 /* DoomsdayNanoDragons.app */;
+			productReference = AAFCB82A2B1F5F640064A4D3 /* The Academy Game.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -250,7 +312,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AAFCB8292B1F5F640064A4D3 /* DoomsdayNanoDragons */,
+				AAFCB8292B1F5F640064A4D3 /* The Academy Game */,
 			);
 		};
 /* End PBXProject section */
@@ -260,11 +322,29 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA7C5BBC2B2FBF9400EE0F44 /* whoosh.mp3 in Resources */,
+				AA7C5BDA2B2FCC9A00EE0F44 /* SantiScream1.wav.wav in Resources */,
+				AA7C5BC82B2FC46F00EE0F44 /* grunt.mp3 in Resources */,
+				AA7C5BC02B2FC23800EE0F44 /* fart3.mp3 in Resources */,
+				AA7C5BD82B2FCC8E00EE0F44 /* jump.wav in Resources */,
+				AA7C5BBE2B2FC23300EE0F44 /* fart4.mp3 in Resources */,
+				AA7C5BD02B2FC80900EE0F44 /* lol2.mp3 in Resources */,
 				AAFCB8392B1F5F650064A4D3 /* Main.storyboard in Resources */,
+				AA7C5BC62B2FC24D00EE0F44 /* fart1.mp3 in Resources */,
 				AAFCB8302B1F5F650064A4D3 /* GameScene.sks in Resources */,
+				AA7C5BC22B2FC23D00EE0F44 /* laugh.mp3 in Resources */,
+				AA7C5BD22B2FC80E00EE0F44 /* lol3.mp3 in Resources */,
 				AAFCB83B2B1F5F660064A4D3 /* Assets.xcassets in Resources */,
+				AA7C5BCC2B2FC7FC00EE0F44 /* laugh2.mp3 in Resources */,
 				AAFCB83E2B1F5F660064A4D3 /* LaunchScreen.storyboard in Resources */,
+				AA7C5BD62B2FCC8800EE0F44 /* die.wav in Resources */,
+				AA7C5BCE2B2FC80200EE0F44 /* lol1.mp3 in Resources */,
+				AA7C5BD42B2FC81400EE0F44 /* laugh3.mp3 in Resources */,
+				AA7C5BDE2B2FD06E00EE0F44 /* filiDead.wav in Resources */,
+				AA7C5BC42B2FC24500EE0F44 /* fart2.mp3 in Resources */,
 				AAFCB8322B1F5F650064A4D3 /* Actions.sks in Resources */,
+				AA7C5BCA2B2FC4F100EE0F44 /* sniff.mp3 in Resources */,
+				AA7C5BDC2B2FCCA000EE0F44 /* SantiScream2.wav in Resources */,
 				AAAD73822B28C049002038AF /* LuckiestGuy-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -447,7 +527,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = QZYNDY6Q72;
+				DEVELOPMENT_TEAM = VZ9PFZ46UL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DoomsdayNanoDragons/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -461,7 +541,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Simone-Mercolino";
+				PRODUCT_BUNDLE_IDENTIFIER = "Santiago-Torres";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -476,7 +556,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = QZYNDY6Q72;
+				DEVELOPMENT_TEAM = VZ9PFZ46UL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DoomsdayNanoDragons/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -490,7 +570,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Simone-Mercolino";
+				PRODUCT_BUNDLE_IDENTIFIER = "Santiago-Torres";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -510,7 +590,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AAFCB8412B1F5F660064A4D3 /* Build configuration list for PBXNativeTarget "DoomsdayNanoDragons" */ = {
+		AAFCB8412B1F5F660064A4D3 /* Build configuration list for PBXNativeTarget "The Academy Game" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AAFCB8422B1F5F660064A4D3 /* Debug */,

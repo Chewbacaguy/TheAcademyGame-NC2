@@ -5,9 +5,11 @@
 //  Created by Santiago Torres Alvarez on 12/12/23.
 //import SpriteKit
 import SwiftUI
+import AVFoundation
 import SpriteKit
 
 class CigaretteGameScene: SKScene {
+    var audioPlayer: AVAudioPlayer?
     var animationTextures: [SKTexture] = []
     var animatedNode: SKSpriteNode!
     var isAnimationPaused = false
@@ -50,6 +52,7 @@ class CigaretteGameScene: SKScene {
         for i in 1...27 {
             let texture = SKTexture(imageNamed: "Cig\(i)")
             animationTextures.append(texture)
+            playWhooshSound()
         }
         
         animatedNode = SKSpriteNode(texture: animationTextures.first)
@@ -62,6 +65,7 @@ class CigaretteGameScene: SKScene {
         let repeatAction = SKAction.repeatForever(animationAction)
         
         animatedNode.run(repeatAction, withKey: "animationKey")
+        
     }
     
     
@@ -102,13 +106,24 @@ class CigaretteGameScene: SKScene {
         let animationAction = SKAction.animate(with: animationTextures, timePerFrame: 0.1)
         let repeatAction = SKAction.repeatForever(animationAction)
         animatedNode.run(repeatAction, withKey: "animationKey")
+        
     }
     
+    func playWhooshSound() {
+        guard let url = Bundle.main.url(forResource: "whoosh", withExtension: "mp3") else { return }
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            audioPlayer?.play()
+        } catch {
+            print("Could not load whoosh sound file")
+        }
+    }
     
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard !isAnimationPaused else { return } // Do nothing if animation is already paused
         
+       
         let touch = touches.first
         let touchLocation = touch?.location(in: self)
         
@@ -125,6 +140,7 @@ class CigaretteGameScene: SKScene {
         } else {
             print("You missed! You lose!")
             consecutiveCatches = 0
+            //playWhooshSound()
             
         }
         isAnimationPaused = true

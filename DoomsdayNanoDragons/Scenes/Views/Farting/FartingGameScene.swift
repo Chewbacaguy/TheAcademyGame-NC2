@@ -7,10 +7,12 @@
 
 
 import SpriteKit
+import AVFoundation
 import SwiftUI
 
 class FartingGameScene: SKScene {
     @ObservedObject var viewModel: FartingGameViewModel
+    var audioPlayer: AVAudioPlayer?
     @Binding var isAnimationStarted: Bool
     @Binding var isGameOver: Bool
     @Binding var isButtonPressed: Bool
@@ -82,9 +84,6 @@ class FartingGameScene: SKScene {
         self._isSantoFarting = isSantoFarting
         self._isStefanoFarting = isStefanoFarting
         self.startTime = false
-        
-        
-        
         
         super.init(size: size)
         
@@ -230,11 +229,13 @@ class FartingGameScene: SKScene {
     @objc func buttonTouchDown() {
         fartButton.backgroundColor = UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 1)
         isButtonPressed = true
+        playFartingSounds()
     }
 
     @objc func buttonTouchUpInside() {
         fartButton.backgroundColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
         isButtonPressed = false
+        playLolSounds()
     }
      
      
@@ -269,26 +270,13 @@ class FartingGameScene: SKScene {
      }
      
      
-     // Handle button press and score updates
-     private func handleButtonPress(isButtonPressed: Bool) {
-         if isButtonPressed {
-             // Handle button pressed logic here
-             showSantoAndStefanoFarting()
-             // Increment score by 5 points
-             viewModel.incrementScoreBy(20)
-         }
-         else{
-            // hideSantoAndStefanoFarting()
-         }
-     }
-     
-     
      
      private func hideSantoAndStefanoFarting() {
          santoNormal.isHidden = false
          santoFarting.isHidden = true
          stefanoNormal.isHidden = false
          stefanoFarting.isHidden = true
+         
      }
      
      private func showSantoAndStefanoFarting() {
@@ -296,6 +284,7 @@ class FartingGameScene: SKScene {
          santoFarting.isHidden = false
          stefanoNormal.isHidden = true
          stefanoFarting.isHidden = false
+        
      }
      
      
@@ -304,6 +293,68 @@ class FartingGameScene: SKScene {
         let randomTime = Double.random(in: 2...5) // Reduced time between 2 to 5 seconds
         DispatchQueue.main.asyncAfter(deadline: .now() + randomTime) { [weak self] in
             self?.handleVasillyTurn()
+          //  self?.playVasillySnif()
+        }
+    }
+    
+   
+    func playLolSounds() {
+        let soundFileNames = ["lol1", "lol2", "lol3", "laugh2", "laugh3", "laugh"]
+
+        let randomIndex = Int.random(in: 0..<soundFileNames.count)
+        let selectedSoundFileName = soundFileNames[randomIndex]
+        
+        guard let url = Bundle.main.url(forResource: selectedSoundFileName, withExtension: "mp3") else {
+            print("Could not find file: \(selectedSoundFileName).mp3")
+            return
+        }
+
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            audioPlayer?.play()
+        } catch {
+            print("Could not load file: \(selectedSoundFileName).mp3")
+        }
+    }
+    
+    
+    func playFartingSounds() {
+        let soundFileNames = ["fart1", "fart2", "fart3", "fart4"]
+
+        let randomIndex = Int.random(in: 0..<soundFileNames.count)
+        let selectedSoundFileName = soundFileNames[randomIndex]
+        
+        guard let url = Bundle.main.url(forResource: selectedSoundFileName, withExtension: "mp3") else {
+            print("Could not find file: \(selectedSoundFileName).mp3")
+            return
+        }
+
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            audioPlayer?.play()
+        } catch {
+            print("Could not load file: \(selectedSoundFileName).mp3")
+        }
+    }
+    
+    
+    func playVasillyGrunt(){
+        guard let url = Bundle.main.url(forResource: "grunt", withExtension: "mp3") else { return }
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            audioPlayer?.play()
+        } catch {
+            print("Could not load grunt sound file")
+        }
+    }
+    
+    func playVasillySnif(){
+        guard let url = Bundle.main.url(forResource: "snif", withExtension: "mp3") else { return }
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            audioPlayer?.play()
+        } catch {
+            print("Could not load grunt sound file")
         }
     }
     
@@ -312,14 +363,13 @@ class FartingGameScene: SKScene {
 
         if vasillyTurnCount <= 5 {
             showVasillyLooking()
-
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
                 guard let self = self else { return }
-
                 if self.isButtonPressed {
                     self.showVasillyAngry()
+                    playVasillyGrunt()
                     self.resetScore()
-
                     DispatchQueue.main.asyncAfter(deadline: .now() + Double.random(in: 2...3)) {
                         self.showVasillyThinking()
                         self.scheduleVasillyTurn() // Schedule next turn
@@ -327,6 +377,7 @@ class FartingGameScene: SKScene {
                 } else {
                     self.showVasillyThinking()
                     self.scheduleVasillyTurn() // Schedule next turn
+                    playVasillySnif()
                 }
             }
         }
@@ -378,6 +429,7 @@ class FartingGameScene: SKScene {
         if isButtonPressed {
             showSantoAndStefanoFarting()
             incrementScore()
+          
         } else {
             hideSantoAndStefanoFarting()
         }

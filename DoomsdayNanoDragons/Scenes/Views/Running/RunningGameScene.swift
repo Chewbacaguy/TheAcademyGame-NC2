@@ -24,8 +24,8 @@ class RunningGameScene: SKScene, SKPhysicsContactDelegate {
     var score = 0 as Int
     
     //sound effects
-    let jumpSound = SKAction.playSoundFileNamed("dino.assets/sounds/jump", waitForCompletion: false)
-    let dieSound = SKAction.playSoundFileNamed("dino.assets/sounds/die", waitForCompletion: false)
+    let jumpSound = SKAction.playSoundFileNamed("SantiScream2", waitForCompletion: false)
+    let dieSound = SKAction.playSoundFileNamed("filiDead", waitForCompletion: false)
     
     //sprites
     var dinoSprite: SKSpriteNode!
